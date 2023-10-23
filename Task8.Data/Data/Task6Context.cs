@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Task8.Data.Entitys.Generated;
+using Task8.Data.Entity.Generated;
 
 namespace Task8.Data.Data;
 

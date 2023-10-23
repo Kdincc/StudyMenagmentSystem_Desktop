@@ -3,8 +3,83 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
         Title="{Binding Title}" Height="600" Width="920" >
-    <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
-    </Grid>
+    <Border Background="#524B75" CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ToolBarRegion"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,13,0">
+                    <Border Background="Transparent">
+                        <Button Width="20"
+                             Height="20"
+                             Foreground="LightGray"
+                             FontWeight="SemiBold"
+                             Content="▂"
+                             Style="{StaticResource WindowButton}"
+                             Margin="3"
+                             />
+                    </Border>
+
+                    <Border Background="Transparent">
+                        <Button Width="20"
+                             Height="20"
+                             Foreground="LightGray"
+                             FontWeight="SemiBold"
+                             Content="╳"
+                             Style="{StaticResource WindowButton}" 
+                             />
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Grid.Row="0" Text="Training portal&#x0a;     manager"
+                    Margin="0,5,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="22"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    FontFamily="/Fonts/#Poppins"/>
+
+            <StackPanel Grid.Row="2">
+                <Button Grid.Column="0" 
+                     Grid.Row="1"
+                     Height="50"
+                     FontSize="16"
+                     Foreground="White"
+                     Content="Home"
+                     Style="{StaticResource MenuButton}"/>
+
+                <Button Grid.Column="0" 
+                     Grid.Row="1"
+                     Height="50"
+                     FontSize="16"
+                     Foreground="White"
+                     Content="Edit"
+                     Style="{StaticResource MenuButton}"/>
+            </StackPanel>
+
+            <ContentControl Grid.Column="1" Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"/>
+        </Grid>
+    </Border>
 </Window>
