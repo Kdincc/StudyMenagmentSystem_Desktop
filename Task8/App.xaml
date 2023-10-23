@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:Task8"
              xmlns:prism="http://prismlibrary.com/" >
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes\MenuButton.xaml"/>
+                <ResourceDictionary Source="Themes\WindowButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
