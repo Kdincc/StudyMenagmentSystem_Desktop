@@ -2,13 +2,19 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Background="Transparent"
         ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
-        Title="{Binding Title}" Height="600" Width="920" >
-    <Border Background="#524B75" CornerRadius="20">
+        Title="{Binding Title}" Height="600" Width="920">
+    <Border Background="#1D1C21">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDown">
+                <i:InvokeCommandAction Command="{Binding DragWindowCommand}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -16,7 +22,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="125"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -37,7 +43,8 @@
                              Content="▂"
                              Style="{StaticResource WindowButton}"
                              Margin="3"
-                             />
+                             Command="{Binding MinimazeCommand}">
+                        </Button>
                     </Border>
 
                     <Border Background="Transparent">
@@ -46,29 +53,32 @@
                              Foreground="LightGray"
                              FontWeight="SemiBold"
                              Content="╳"
-                             Style="{StaticResource WindowButton}" 
-                             />
+                             Style="{StaticResource WindowButton}"
+                             Command="{Binding ExitCommand}">
+                        </Button>
                     </Border>
                 </StackPanel>
             </Grid>
 
             <TextBlock Grid.Row="0" Text="Training portal&#x0a;     manager"
-                    Margin="0,5,0,0"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     FontSize="22"
                     Foreground="White"
                     FontWeight="SemiBold"
-                    FontFamily="/Fonts/#Poppins"/>
+                    FontFamily="/Fonts/#Poppins"
+                    Margin="5"/>
 
-            <StackPanel Grid.Row="2">
+            <StackPanel Grid.Row="2" Background="#35343D">
                 <Button Grid.Column="0" 
                      Grid.Row="1"
                      Height="50"
                      FontSize="16"
                      Foreground="White"
                      Content="Home"
-                     Style="{StaticResource MenuButton}"/>
+                     FontFamily="/Fonts/#Poppins"
+                     Style="{StaticResource MenuButton}"
+                     Command="{Binding NavigateToHomeCommand}"/>
 
                 <Button Grid.Column="0" 
                      Grid.Row="1"
@@ -76,6 +86,8 @@
                      FontSize="16"
                      Foreground="White"
                      Content="Edit"
+                     FontFamily="/Fonts/#Poppins"
+                     Visibility="{Binding IsEditButtonActive}"
                      Style="{StaticResource MenuButton}"/>
             </StackPanel>
 

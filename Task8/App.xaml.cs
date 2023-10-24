@@ -1,4 +1,5 @@
 ﻿using Prism.Ioc;
+using Prism.Modularity;
 using System.Windows;
 using Task8.BL;
 using Task8.BL.Interfaces;
@@ -24,6 +25,13 @@ namespace Task8
             containerRegistry.Register<Task6Context>();
             containerRegistry.Register<IHomeModel, HomeModel>();
             containerRegistry.Register<ICourseEditModel, CourseEditModel>();
+        }
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            base.ConfigureModuleCatalog(moduleCatalog);
+
+            moduleCatalog.AddModule<NavigationModule>();
         }
     }
 }

@@ -24,7 +24,7 @@ public partial class Task6Context : DbContext
     public virtual DbSet<Student> Students { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DbString"].ConnectionString);
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-8PE6CBB\\SQLEXPRESS;Initial Catalog=Task6;Integrated Security=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
