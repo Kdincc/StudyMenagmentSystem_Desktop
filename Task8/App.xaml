@@ -8,6 +8,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes\MenuButton.xaml"/>
                 <ResourceDictionary Source="Themes\WindowButton.xaml"/>
+                <ResourceDictionary Source="Themes\TreeItemStyle.xaml"/>
+                <ResourceDictionary Source="Themes\ToolBarButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes\ModernTextBox.xaml"/>
+                <ResourceDictionary Source="Themes\ItemTextBox.xaml"/>
+                <ResourceDictionary Source="Themes\ListItemButton.xaml"/>
+                <ResourceDictionary Source="Themes\CustomListBoxItem.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

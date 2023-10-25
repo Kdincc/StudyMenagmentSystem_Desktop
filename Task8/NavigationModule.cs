@@ -22,12 +22,14 @@ namespace Task8
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Home>();
+            containerRegistry.RegisterForNavigation<ToolBar>();
+            containerRegistry.RegisterForNavigation<CourseEdit>();
         }
     }
 
     public enum RegionNames
     {
         ContentRegion,
-        ToolBarRegiion
+        ToolBarRegion
     }
 }

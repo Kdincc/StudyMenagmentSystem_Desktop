@@ -10,7 +10,15 @@ namespace Task8.BL.Models
 {
     public class CourseEditModel : ICourseEditModel
     {
-        public IEnumerable<Group> Groups => throw new NotImplementedException();
+        private Course _currentCourse = new();
+        private readonly ICourseRepository _repository;
+
+        public CourseEditModel(ICourseRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public IEnumerable<Group> Groups => _currentCourse.Groups;
 
         public void BuildDocxGroupList(string path)
         {
@@ -27,9 +35,9 @@ namespace Task8.BL.Models
             throw new NotImplementedException();
         }
 
-        public void InitCourse(int courseId)
+        public void InitCourse(Course course)
         {
-            throw new NotImplementedException();
+            _currentCourse = _repository.Find(course.CourseId);
         }
 
         public void RemoveGroup(Group group)

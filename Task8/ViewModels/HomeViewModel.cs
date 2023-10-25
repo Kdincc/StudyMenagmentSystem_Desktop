@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
+using Task8.Events;
 
 namespace Task8.ViewModels
 {
     public class HomeViewModel : BindableBase
     {
         private readonly IHomeModel _homeModel;
+        private readonly IEventAggregator _eventAggregator;
 
-        public HomeViewModel(IHomeModel homeModel)
+        public HomeViewModel(IHomeModel homeModel, IEventAggregator eventAggregator)
         {
             _homeModel = homeModel;
+            _eventAggregator = eventAggregator;
             SelectedItemChangedCommand = new(SelectedItemChanged);
         }
 
@@ -27,7 +31,7 @@ namespace Task8.ViewModels
 
         private void SelectedItemChanged(object obj)
         {
-            
+            _eventAggregator.GetEvent<TreeItemSelectedEvent>().Publish(obj);   
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Task8.BL.Interfaces
 
         public void RemoveGroup(Group group);
 
-        public void InitCourse(int courseId);
+        public void InitCourse(Course course);
 
         public void SaveChanges();
     }

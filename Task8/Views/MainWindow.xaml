@@ -31,7 +31,7 @@
                     <RowDefinition Height="25"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-
+                
                 <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ToolBarRegion"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,13,0">
@@ -87,8 +87,8 @@
                      Foreground="White"
                      Content="Edit"
                      FontFamily="/Fonts/#Poppins"
-                     Visibility="{Binding IsEditButtonActive}"
-                     Style="{StaticResource MenuButton}"/>
+                     Style="{StaticResource MenuButton}"
+                     Command="{Binding NavigateToEdit}"/>
             </StackPanel>
 
             <ContentControl Grid.Column="1" Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"/>

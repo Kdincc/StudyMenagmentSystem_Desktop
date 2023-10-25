@@ -33,14 +33,26 @@
                           Background="Transparent"
                           Name="Tree"
                           BorderThickness="0"
-                          Margin="5"
+                          Margin="10,5,5,5"
                           ItemsSource="{Binding Courses}">
+
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#5E4A7B"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    
                     <i:Interaction.Triggers>
-                        <i:EventTrigger>
+                        <i:EventTrigger EventName="SelectedItemChanged">
                             <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}" 
                                                    CommandParameter="{Binding ElementName=Tree, Path=SelectedItem}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
+                        
                     <TreeView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type entity:Course}" ItemsSource="{Binding Groups}">
                             <TextBlock Text="{Binding Name}" 
@@ -49,7 +61,26 @@
                                        Foreground="White"
                                        FontWeight="SemiBold"
                                        FontFamily="/Themes/#Poppins"/>
+                            
                         </HierarchicalDataTemplate>
+
+                        <HierarchicalDataTemplate DataType="{x:Type entity:Group}" ItemsSource="{Binding Students}">
+                            <TextBlock Text="{Binding Name}" 
+                                       Margin="5" 
+                                       FontSize="16" 
+                                       Foreground="White"
+                                       FontWeight="SemiBold"
+                                       FontFamily="/Themes/#Poppins"/>
+                        </HierarchicalDataTemplate>
+
+                        <DataTemplate DataType="{x:Type entity:Student}">
+                            <TextBlock Text="{Binding FirstName}" 
+                                       Margin="5" 
+                                       FontSize="16" 
+                                       Foreground="White"
+                                       FontWeight="SemiBold"
+                                       FontFamily="/Themes/#Poppins"/>
+                        </DataTemplate>
                     </TreeView.Resources>
                 </TreeView>
             </StackPanel>

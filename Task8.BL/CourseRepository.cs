@@ -28,7 +28,7 @@ namespace Task8.BL
 
         public Course Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.Courses.FirstOrDefault(c => c.CourseId == id);
         }
 
         public void Remove(Course entity)
