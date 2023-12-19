@@ -102,7 +102,7 @@
                                Margin="18,10,0,10"
                                FontFamily="/Fonts/#Poppins"/>
 
-                    <ListView ItemsSource="{Binding Groups}"
+                    <ListView ItemsSource="{Binding Students}"
                               Background="Transparent"
                               BorderThickness="0"
                               BorderBrush="White"
@@ -110,7 +110,6 @@
                               Grid.Row="1"
                               Foreground="White"
                               Name="GroupList"
-                              SelectedItem="{Binding SelectedGroup}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                               ItemContainerStyle="{StaticResource CustomListBoxItemStyle}"
