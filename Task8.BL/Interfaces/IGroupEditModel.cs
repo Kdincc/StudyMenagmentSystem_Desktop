@@ -9,6 +9,8 @@ namespace Task8.BL.Interfaces
 {
     public interface IGroupEditModel
     {
+        public IEnumerable<Student> Students { get; }
+
         public void InitGroup(Group group);
 
         public void CreateStudent(string name, string lastName);
