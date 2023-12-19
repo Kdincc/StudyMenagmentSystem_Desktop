@@ -10,8 +10,8 @@ namespace Task8.BL.Models
 {
     public class GroupEditModel : IGroupEditModel
     {
-        private readonly IRepositoryService _repositoryService;
         private Group _currentGroup = new();
+        private readonly IRepositoryService _repositoryService;
 
         public GroupEditModel(IRepositoryService repositoryService)
         {
@@ -34,9 +34,10 @@ namespace Task8.BL.Models
             }
         }
 
-        public void RemoveStudent(Student group)
+        public void RemoveStudent(Student student)
         {
-            throw new NotImplementedException();
+            _repositoryService.Remove(student);
+            _repositoryService.SaveChanges();
         }
 
         public void SaveChangesFor(Student student)
