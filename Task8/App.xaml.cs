@@ -27,6 +27,7 @@ namespace Task8
             containerRegistry.Register<Task6Context>();
             containerRegistry.Register<IHomeModel, HomeModel>();
             containerRegistry.Register<ICourseEditModel, CourseEditModel>();
+            containerRegistry.Register<IGroupEditModel, GroupEditModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
