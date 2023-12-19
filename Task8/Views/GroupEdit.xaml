@@ -6,18 +6,11 @@
              xmlns:local="clr-namespace:Task8.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="#9693AD">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#757387" Offset="0.0"/>
-                <GradientStop Color="#9693AD" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
 
 
 
@@ -26,34 +19,48 @@
                 BorderThickness="0"
                 Grid.Row="0">
 
-            <StackPanel VerticalAlignment="Bottom" >
+            <Grid>
 
-                <StackPanel Orientation="Horizontal">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <Border CornerRadius="10"
-                            Margin="10,5,5,5"
-                            Background="#2B2A30">
-                        <TextBox Width="150"
+                <StackPanel VerticalAlignment="Bottom"
+                            Grid.Column="0">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Border CornerRadius="10"
+                                Margin="10,5,5,5"
+                                Background="#2B2A30">
+                            <TextBox Width="150"
                                  Height="35"
                                  Margin="0"
                                  Background="Transparent"
                                  FontSize="16"
                                  Text="{Binding NewGroupName, Mode= OneWayToSource }"
                                  Style="{StaticResource ModernTextBox}"/>
-                    </Border>
+                        </Border>
 
 
-                    <Button Style="{StaticResource ToolBarButtonStyle}"
-                    Width="128"
-                    Content="Create group"
-                    Margin="5"
-                    Foreground="White"
-                    FontSize="16"
-                    Command="{Binding Add}">
-                    </Button>
+                        <Button Style="{StaticResource ToolBarButtonStyle}"
+                                Width="124"
+                                Height="35"
+                                Content="Create student"
+                                Margin="5,5,5,5"
+                                Foreground="White"
+                                FontSize="16"
+                                Command="{Binding Add}">
+                        </Button>
 
+
+
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
+
+
 
         </Border>
 
@@ -61,7 +68,9 @@
                 Width="720"
                 HorizontalAlignment="Center" 
                 Grid.Row="1"
-                Background="Transparent">
+                Background="Transparent"
+                BorderThickness="0"
+                BorderBrush="Transparent">
             <Border CornerRadius="10"
                         Margin="10"
                         BorderBrush="White"
@@ -84,26 +93,26 @@
 
                     <TextBlock Text="Students"
                                Grid.Row="0"
-                          Foreground="White"
-                          FontSize="22"
-                          HorizontalAlignment="Left"
-                          FontWeight="Bold"
-                          Margin="18,10,0,10"
-                          FontFamily="/Fonts/#Poppins"/>
+                               Foreground="White"
+                               FontSize="22"
+                               HorizontalAlignment="Left"
+                               FontWeight="Bold"
+                               Margin="18,10,0,10"
+                               FontFamily="/Fonts/#Poppins"/>
 
                     <ListView ItemsSource="{Binding Groups}"
-                                      Background="Transparent"
-                                      BorderThickness="0"
-                                      BorderBrush="White"
-                                      Margin="5"
-                                      Grid.Row="1"
-                                      Foreground="White"
-                     Name="GroupList"
-                     SelectedItem="{Binding SelectedGroup}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                     ItemContainerStyle="{StaticResource CustomListBoxItemStyle}"
-                     d:ItemsSource="{d:SampleData ItemCount=5}">
+                              Background="Transparent"
+                              BorderThickness="0"
+                              BorderBrush="White"
+                              Margin="5"
+                              Grid.Row="1"
+                              Foreground="White"
+                              Name="GroupList"
+                              SelectedItem="{Binding SelectedGroup}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                              ItemContainerStyle="{StaticResource CustomListBoxItemStyle}"
+                              d:ItemsSource="{d:SampleData ItemCount=5}">
 
                         <ListView.View>
                             <GridView>
@@ -131,7 +140,7 @@
                                                 <Border CornerRadius="10"
                                                Margin="5"
                                                Background="#545261">
-                                                    <TextBox Text="{Binding Name}"
+                                                    <TextBox Text="{Binding FirstName}"
                                                     Margin="4"
                                                     Width="160"
                                                     BorderThickness="0"
@@ -146,46 +155,56 @@
                                         </GridViewColumn.CellTemplate>
 
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Teacher" Width="200" >
+                                    <GridViewColumn Header="Surname" Width="200" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <ComboBox ItemsSource="{Binding DataContext.Teachers, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
-                                                                  Name="TeacherBox"
-                                                                  Style="{StaticResource ComboBoxStyles}"
-                                                                  SelectedValue="{Binding Teacher.TeacherId}"
-                                                                  SelectedValuePath="TeacherId"
-                                                                  DisplayMemberPath="FullName"
-                                                                  Foreground="White"
-                                                                  FontSize="14"
-                                                                  Padding="10">
-                                                </ComboBox>
+                                                <Border CornerRadius="10"
+                                               Margin="5"
+                                               Background="#545261">
+                                                    <TextBox Text="{Binding LastName}"
+                                                    Margin="4"
+                                                    Width="160"
+                                                    BorderThickness="0"
+                                                    TextAlignment="Center"
+                                                    Foreground="White"
+                                                    FontSize="14"
+                                                    Background="Transparent">
+
+                                                    </TextBox>
+                                                </Border>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Header="Functionality" Width="302">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource ListItemButtonStyle}"
-                                                   Content="Save"
-                                                   Foreground="White"
-                                                   Width="131"
-                                                   Margin="0"
-                                                   Height="23"
-                                                   Command="{Binding DataContext.Save, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
-                                                   CommandParameter="{Binding ElementName=GroupList, Path=SelectedItem}">
-                                                    </Button>
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Button Style="{StaticResource ListItemButtonStyle}"
+                                                                Content="Save"
+                                                                Foreground="White"
+                                                                Width="131"
+                                                                Margin="0"
+                                                                Height="20"
+                                                                Command="{Binding DataContext.Save, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                                CommandParameter="{Binding ElementName=GroupList, Path=SelectedItem}">
+                                                        </Button>
 
-                                                    <Button Style="{StaticResource ListItemButtonStyle}"
-                                                   Content="Remove"
-                                                   Foreground="White"
-                                                   Width="131"
-                                                   Margin="0"
-                                                   Height="23"
-                                                   Command="{Binding DataContext.Remove, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
-                                                   CommandParameter="{Binding ElementName=GroupList, Path=SelectedItem}">
-                                                    </Button>
+                                                        <Button Style="{StaticResource ListItemButtonStyle}"
+                                                            Content="Remove"
+                                                            Foreground="White"
+                                                            Width="131"
+                                                            Margin="0"
+                                                            Height="20"
+                                                            Command="{Binding DataContext.Remove, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                            CommandParameter="{Binding ElementName=GroupList, Path=SelectedItem}">
+                                                        </Button>
+
+
+                                                    </StackPanel>
                                                 </StackPanel>
+
+
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
