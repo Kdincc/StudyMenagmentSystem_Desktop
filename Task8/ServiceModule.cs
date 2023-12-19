@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task8.BL.Interfaces;
+using Task8.BL.Services;
+using Task8.BL;
 
 namespace Task8
 {
@@ -17,7 +20,11 @@ namespace Task8
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
+            containerRegistry.Register<IDocxService, DocxService>();
+            containerRegistry.Register<IPDFService, PDFService>();
+            containerRegistry.Register<ICsvService, CsvService>();
+            containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
+            containerRegistry.Register<ICourseEditMessager, CourseEditMessager>();
         }
     }
 }

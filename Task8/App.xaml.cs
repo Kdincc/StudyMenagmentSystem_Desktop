@@ -24,12 +24,7 @@ namespace Task8
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
-            containerRegistry.Register<ICourseEditMessager, CourseEditMessager>();
             containerRegistry.Register<Task6Context>();
-            containerRegistry.Register<IDocxService, DocxService>();
-            containerRegistry.Register<IPDFService, PDFService>();
-            containerRegistry.Register<ICsvService, CsvService>();
             containerRegistry.Register<IHomeModel, HomeModel>();
             containerRegistry.Register<ICourseEditModel, CourseEditModel>();
         }
@@ -39,6 +34,7 @@ namespace Task8
             base.ConfigureModuleCatalog(moduleCatalog);
 
             moduleCatalog.AddModule<NavigationModule>();
+            moduleCatalog.AddModule<ServiceModule>();
         }
     }
 }
