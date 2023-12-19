@@ -28,6 +28,11 @@ namespace Task8
             containerRegistry.Register<IHomeModel, HomeModel>();
             containerRegistry.Register<ICourseEditModel, CourseEditModel>();
             containerRegistry.Register<IGroupEditModel, GroupEditModel>();
+            containerRegistry.Register<IDocxService, DocxService>();
+            containerRegistry.Register<IPDFService, PDFService>();
+            containerRegistry.Register<ICsvService, CsvService>();
+            containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
+            containerRegistry.Register<ICourseEditMessager, CourseEditMessager>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -35,7 +40,6 @@ namespace Task8
             base.ConfigureModuleCatalog(moduleCatalog);
 
             moduleCatalog.AddModule<NavigationModule>();
-            moduleCatalog.AddModule<ServiceModule>();
         }
     }
 }
