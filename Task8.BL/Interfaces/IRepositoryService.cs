@@ -15,6 +15,8 @@ namespace Task8.BL.Interfaces
 
         public void Remove(Group group);
 
+        public void Remove(Student student);
+
         public Course Find(int id);
 
         public void SaveChanges();
