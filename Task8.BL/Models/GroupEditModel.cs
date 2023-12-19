@@ -15,6 +15,8 @@ namespace Task8.BL.Models
                
         }
 
+        public IEnumerable<Student> Students => throw new NotImplementedException();
+
         public void CreateStudent(string name, string lastName)
         {
             throw new NotImplementedException();
