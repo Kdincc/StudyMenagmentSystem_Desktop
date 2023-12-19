@@ -62,16 +62,6 @@ namespace Task8.ViewModels
 
         #endregion
 
-        private void OnNavigate(object item)
-        {
-            if (item is Course)
-            {
-                _courseEditModel.InitCourse(item as Course);
-                RaisePropertyChanged(nameof(Teachers));
-                RaisePropertyChanged(nameof(Groups));
-            }
-        }
-
         #region Commands
 
         public DelegateCommand<Group> BuildPdfReport { get; }
@@ -159,5 +149,15 @@ namespace Task8.ViewModels
         }
 
         #endregion
+
+        private void OnNavigate(object item)
+        {
+            if (item is Course)
+            {
+                _courseEditModel.InitCourse(item as Course);
+                RaisePropertyChanged(nameof(Teachers));
+                RaisePropertyChanged(nameof(Groups));
+            }
+        }
     }
 }

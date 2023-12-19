@@ -22,33 +22,73 @@
                 Grid.Row="0">
 
             <Grid>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.7*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel VerticalAlignment="Bottom"
-                            Grid.Column="0">
+                <StackPanel VerticalAlignment="Bottom">
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Border CornerRadius="10"
-                                Margin="10,5,5,5"
-                                Background="#2B2A30">
-                            <TextBox Width="150"
-                                 Height="35"
-                                 Margin="0"
-                                 Background="Transparent"
-                                 FontSize="16"
-                                 Text="{Binding NewGroupName, Mode= OneWayToSource }"
-                                 Style="{StaticResource ModernTextBox}"/>
-                        </Border>
+                        <Grid Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
+                            <TextBlock Style="{StaticResource CustomTextBlock}"
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="5"
+                                       FontSize="16"
+                                       Text="First name:">
+
+                            </TextBlock>
+
+                            <Border CornerRadius="10"
+                                    Margin="10,5,5,5"
+                                    Background="#2B2A30"
+                                    Grid.Column="1"
+                                    Grid.Row="0">
+                                <TextBox Width="150"
+                                    Height="35"
+                                    Margin="0"
+                                    Background="Transparent"
+                                    FontSize="16"
+                                    Text="{Binding NewStudentName, Mode= OneWayToSource }"
+                                    Style="{StaticResource ModernTextBox}"/>
+                            </Border>
+
+                            <TextBlock Style="{StaticResource CustomTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       Margin="5"
+                                       FontSize="16"
+                                       Text="Last name:">
+
+                            </TextBlock>
+
+                            <Border CornerRadius="10"
+                                    Margin="10,5,5,5"
+                                    Background="#2B2A30"
+                                    Grid.Column="1"
+                                    Grid.Row="1">
+                                <TextBox Width="150"
+                                    Height="35"
+                                    Margin="0"
+                                    Background="Transparent"
+                                    FontSize="16"
+                                    Text="{Binding NewStudentLastName, Mode= OneWayToSource }"
+                                    Style="{StaticResource ModernTextBox}"/>
+                            </Border>
+                        </Grid>
+                        
+
+                        
                         <Button Style="{StaticResource ToolBarButtonStyle}"
-                                Width="124"
-                                Height="35"
+                                Width="140"
+                                Height="77"
                                 Content="Create student"
                                 Margin="5,5,5,5"
                                 Foreground="White"
