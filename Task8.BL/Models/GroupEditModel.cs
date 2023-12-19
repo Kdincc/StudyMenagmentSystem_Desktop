@@ -22,7 +22,7 @@ namespace Task8.BL.Models
          
         public void CreateStudent(string name, string lastName)
         {
-            _currentGroup.Students.Add(new Student { FirstName = name, LastName = lastName });
+            _currentGroup.Students.Add(new Student { FirstName = name, LastName = lastName, Group = _currentGroup });
             _repositoryService.SaveChanges();
         }
 
