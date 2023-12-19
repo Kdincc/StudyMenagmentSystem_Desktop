@@ -30,6 +30,11 @@ namespace Task8.BL
             _context.Groups.Remove(group);
         }
 
+        public void Remove(Student student)
+        {
+            _context.Students.Remove(student);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
