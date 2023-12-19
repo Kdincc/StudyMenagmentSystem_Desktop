@@ -10,13 +10,16 @@ namespace Task8.BL.Models
 {
     public class GroupEditModel : IGroupEditModel
     {
+        private readonly IRepositoryService _repositoryService;
+        private Group _currentGroup = new();
+
         public GroupEditModel(IRepositoryService repositoryService)
         {
-               
+            _repositoryService = repositoryService;
         }
 
-        public IEnumerable<Student> Students => throw new NotImplementedException();
-
+        public IEnumerable<Student> Students => _currentGroup.Students;
+         
         public void CreateStudent(string name, string lastName)
         {
             throw new NotImplementedException();
@@ -24,7 +27,10 @@ namespace Task8.BL.Models
 
         public void InitGroup(Group group)
         {
-            throw new NotImplementedException();
+            if (group !=  null) 
+            {
+                _currentGroup = group;
+            }
         }
 
         public void RemoveStudent(Student group)
