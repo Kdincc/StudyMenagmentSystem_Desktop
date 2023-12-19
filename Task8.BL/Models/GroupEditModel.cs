@@ -22,7 +22,8 @@ namespace Task8.BL.Models
          
         public void CreateStudent(string name, string lastName)
         {
-            throw new NotImplementedException();
+            _currentGroup.Students.Add(new Student { FirstName = name, LastName = lastName });
+            _repositoryService.SaveChanges();
         }
 
         public void InitGroup(Group group)
