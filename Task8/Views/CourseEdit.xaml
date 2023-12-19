@@ -206,16 +206,16 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <Border CornerRadius="10"
-                                               Margin="5"
-                                               Background="#545261">
+                                                        Margin="5"
+                                                        Background="#545261">
                                                     <TextBox Text="{Binding Name}"
-                                                    Margin="4"
-                                                    Width="160"
-                                                    BorderThickness="0"
-                                                    TextAlignment="Center"
-                                                    Foreground="White"
-                                                    FontSize="14"
-                                                    Background="Transparent">
+                                                            Margin="4"
+                                                            Width="160"
+                                                            BorderThickness="0"
+                                                            TextAlignment="Center"
+                                                            Foreground="White"
+                                                            FontSize="14"
+                                                            Background="Transparent">
 
                                                     </TextBox>
                                                 </Border>
