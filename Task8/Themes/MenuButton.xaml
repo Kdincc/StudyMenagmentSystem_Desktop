@@ -13,10 +13,17 @@
                           Background="{TemplateBinding Background}">
                                 <TextBlock Text="{TemplateBinding Content}"
                                        VerticalAlignment="Center"
-                                       Margin="75,0,0,0"/>
+                                       Margin="75,0,0,0"
+                                       Name="TxtBlock"/>
                             </Grid>
                         </Border>
+
+                        <ControlTemplate.Triggers>
+                            
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
+                    
+                    
                 </Setter.Value>
             </Setter>
 
@@ -32,6 +39,11 @@
             
             <Trigger Property="IsMouseCaptured" Value="True">
                 <Setter Property="Background" Value="#5E4A7B"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Background" Value="#474552"/>
             </Trigger>
         </Style.Triggers>
 

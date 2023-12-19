@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,7 @@ namespace Task8.BL.Interfaces
     {
         public IEnumerable<Group> Groups { get; }
 
-        public void BuildDocxGroupList(string path);
-
-        public void BuildPDFGroupList(string path);
+        public IEnumerable<Teacher> Teachers { get; }
 
         public void CreateGroup(string groupName);
 
@@ -22,6 +21,14 @@ namespace Task8.BL.Interfaces
 
         public void InitCourse(Course course);
 
-        public void SaveChanges();
+        public void BuildDocxReport(string savePath, Group group);
+
+        public void BuildPDFReport(string savePath, Group group);
+
+        public void ImportStudents(Group group, string csvFilePath);
+
+        public void ExportStudents(Group group, string exportPath);
+
+        public void SaveChangesFor(Group group);
     }
 }

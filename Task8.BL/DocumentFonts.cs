@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task8.BL
 {
-    public interface IMessager
+    public enum DocumentFonts
     {
-
+        TimesNewRoman
     }
 }

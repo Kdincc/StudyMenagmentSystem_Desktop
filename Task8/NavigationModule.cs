@@ -1,11 +1,13 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task8.ViewModels;
 using Task8.Views;
 
 namespace Task8
@@ -22,8 +24,8 @@ namespace Task8
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Home>();
-            containerRegistry.RegisterForNavigation<ToolBar>();
             containerRegistry.RegisterForNavigation<CourseEdit>();
+            containerRegistry.RegisterForNavigation<GroupEdit>();
         }
     }
 

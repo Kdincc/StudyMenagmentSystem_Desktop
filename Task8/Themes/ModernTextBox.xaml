@@ -4,49 +4,17 @@
     <Style TargetType="TextBox"
            x:Key="ModernTextBox">
 
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
-                    <Border CornerRadius="10"
-                            Background="#201F24">
+        <!--<Setter Property="Background" Value="#2B2A30"/>-->
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
 
-                        <Grid>
-                            <Rectangle StrokeThickness="1"/>
-                            <TextBox Margin="1"
-                                     Text="{TemplateBinding Text}"
-                                     BorderThickness="0"
-                                     Background="Transparent"
-                                     VerticalContentAlignment="Center"
-                                     Padding="5"
-                                     Foreground="White"
-                                     x:Name="NameBox">
-                            </TextBox>
-
-                            <TextBlock IsHitTestVisible="False"
-                                       Text="Name for new group"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       FontSize="12"
-                                       Foreground="LightGray"
-                                       Grid.Column="1"
-                                       Margin="10,5,5,5">
-
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ElementName=NameBox, Path=Text}" Value="">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                        <Setter Property="Visibility" Value="Hidden"/>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                                       
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+        
     </Style>
 </ResourceDictionary>

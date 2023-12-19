@@ -12,12 +12,11 @@ namespace Task8.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
+        private string _title = "Task 8";
+        private bool _isEditButtonActive = false;
         private object _selectedItem;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
-
-        
 
         public MainWindowViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
@@ -25,13 +24,11 @@ namespace Task8.ViewModels
             _eventAggregator = eventAggregator;
             DragWindowCommand = new(DragWindow);
             ExitCommand = new(Exit);
-            MinimazeCommand = new(Minimaze);
+            MinimizeCommand = new(Minimize);
             NavigateToHomeCommand = new(NavigateToHome);
             NavigateToEdit = new(NavigateToEditCommand);
             _eventAggregator.GetEvent<TreeItemSelectedEvent>().Subscribe(OnTreeItemSelected);
         }
-
-       
 
         public string Title
         {
@@ -39,30 +36,53 @@ namespace Task8.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public bool IsEditButtonActive
+        {
+            get { return _isEditButtonActive; }
+            set { SetProperty(ref _isEditButtonActive, value); }
+        }
+
+        private void OnTreeItemSelected(object item)
+        {
+            _selectedItem = item;
+            IsEditButtonActive = true;
+        }
+
+        private string CastSelectedItem()
+        {
+            return _selectedItem switch
+            {
+                Course => nameof(CourseEdit),
+                Group => nameof(GroupEdit),
+                _ => ""
+            };
+        }
+
+        #region Commands
         public DelegateCommand DragWindowCommand { get; }
 
         public DelegateCommand ExitCommand { get; }
 
-        public DelegateCommand MinimazeCommand { get; }
+        public DelegateCommand MinimizeCommand { get; }
 
         public DelegateCommand NavigateToHomeCommand { get; }
 
-        public DelegateCommand NavigateToEdit {  get; }
+        public DelegateCommand NavigateToEdit { get; }
 
         private void NavigateToHome()
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), nameof(Home));
-            _eventAggregator.GetEvent<HomeNavigateEvent>().Publish();
         }
 
         private void NavigateToEditCommand()
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), CastSelectedItem());
-            _regionManager.RequestNavigate(RegionNames.ToolBarRegion.ToString(), nameof(ToolBar));  
             _eventAggregator.GetEvent<EditNavigateEvent>().Publish(_selectedItem);
+            IsEditButtonActive = false;
+            RaisePropertyChanged(nameof(IsEditButtonActive));
         }
 
-        private void Minimaze()
+        private void Minimize()
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
@@ -77,18 +97,6 @@ namespace Task8.ViewModels
             Application.Current.MainWindow.DragMove();
         }
 
-        private void OnTreeItemSelected(object item)
-        {
-            _selectedItem = item;
-        }
-
-        private string CastSelectedItem()
-        {
-            return _selectedItem switch
-            {
-                Course => nameof(CourseEdit),
-                _ => ""
-            };
-        }
+        #endregion
     }
 }

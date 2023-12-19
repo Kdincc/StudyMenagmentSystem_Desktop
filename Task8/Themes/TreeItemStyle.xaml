@@ -4,12 +4,21 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeViewItem">
-                    <Border Name="Bd" Background="Transparent" Width="100" Height="50">
-                        <ContentPresenter />
+                    <Border Name="Bd" 
+                            Background="Transparent" 
+                            Width="100" 
+                            Height="50"
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter  />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="White" />
+                            <Setter TargetName="Bd" Property="Background" Value="#5E4A7B" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="#5E4A7B"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

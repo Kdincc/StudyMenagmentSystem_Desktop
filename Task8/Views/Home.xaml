@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Task8.Views"
+             xmlns:local="clr-namespace:Task8.ViewModels"
              xmlns:entity="clr-namespace:Task8.Data.Entity.Generated;assembly=Task8.Data"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
+
+        <Border Background="#35343D" Height="100">
+            
+        </Border>
+        
         <Border Height="480" 
                 Width="720"
                 HorizontalAlignment="Left">
@@ -16,7 +21,7 @@
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                     <GradientStop Color="#757387" Offset="0.0"/>
-                    <GradientStop Color="#757387" Offset="1"/>
+                    <GradientStop Color="#9693AD" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 

@@ -26,14 +26,13 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Grid.Row ="0" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
-                    <RowDefinition />
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 
-                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ToolBarRegion"/>
-
+                <ContentControl Grid.Column="0" Grid.Row="2" prism:RegionManager.RegionName="ContentRegion"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,13,0">
                     <Border Background="Transparent">
                         <Button Width="20"
@@ -43,7 +42,7 @@
                              Content="▂"
                              Style="{StaticResource WindowButton}"
                              Margin="3"
-                             Command="{Binding MinimazeCommand}">
+                             Command="{Binding MinimizeCommand}">
                         </Button>
                     </Border>
 
@@ -60,14 +59,15 @@
                 </StackPanel>
             </Grid>
 
-            <TextBlock Grid.Row="0" Text="Training portal&#x0a;     manager"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    FontSize="22"
-                    Foreground="White"
-                    FontWeight="SemiBold"
-                    FontFamily="/Fonts/#Poppins"
-                    Margin="5"/>
+            <TextBlock Grid.Row="0" 
+                       Text="Training portal&#x0a;     manager"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="22"
+                       Foreground="White"
+                       FontWeight="SemiBold"
+                       FontFamily="/Fonts/#Poppins"
+                       Margin="5"/>
 
             <StackPanel Grid.Row="2" Background="#35343D">
                 <Button Grid.Column="0" 
@@ -82,16 +82,19 @@
 
                 <Button Grid.Column="0" 
                      Grid.Row="1"
+                     IsEnabled="{Binding IsEditButtonActive, Mode=TwoWay}"
                      Height="50"
                      FontSize="16"
                      Foreground="White"
                      Content="Edit"
                      FontFamily="/Fonts/#Poppins"
                      Style="{StaticResource MenuButton}"
-                     Command="{Binding NavigateToEdit}"/>
+                     Command="{Binding NavigateToEdit}"
+                     ToolTip="Navigate to edit page of selected item">
+
+                </Button>
             </StackPanel>
 
-            <ContentControl Grid.Column="1" Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"/>
         </Grid>
     </Border>
 </Window>

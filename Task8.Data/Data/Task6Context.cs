@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Task8.Data.Entity.Generated;
 
@@ -22,6 +21,8 @@ public partial class Task6Context : DbContext
     public virtual DbSet<Group> Groups { get; set; }
 
     public virtual DbSet<Student> Students { get; set; }
+
+    public virtual DbSet<Teacher> Teachers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source=DESKTOP-8PE6CBB\\SQLEXPRESS;Initial Catalog=Task6;Integrated Security=True;TrustServerCertificate=True");
@@ -49,6 +50,8 @@ public partial class Task6Context : DbContext
 
             entity.ToTable("GROUPS");
 
+            entity.HasIndex(e => e.TeacherId, "IX_GROUPS_TeacherId");
+
             entity.Property(e => e.GroupId).HasColumnName("GROUP_ID");
             entity.Property(e => e.CourseId).HasColumnName("COURSE_ID");
             entity.Property(e => e.Name)
@@ -58,6 +61,8 @@ public partial class Task6Context : DbContext
             entity.HasOne(d => d.Course).WithMany(p => p.Groups)
                 .HasForeignKey(d => d.CourseId)
                 .HasConstraintName("FK__GROUPS__NAME__398D8EEE");
+
+            entity.HasOne(d => d.Teacher).WithMany(p => p.Groups).HasForeignKey(d => d.TeacherId);
         });
 
         modelBuilder.Entity<Student>(entity =>

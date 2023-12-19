@@ -12,8 +12,10 @@
                       HorizontalAlignment="Stretch"
                       Background="{TemplateBinding Background}">
                                 <TextBlock Text="{TemplateBinding Content}"
-                                   VerticalAlignment="Center"
-                                   Margin="18,0,0,0"/>
+                                           TextWrapping="WrapWithOverflow"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                   Margin="0,0,0,0"/>
                             </Grid>
                         </Border>
                     </ControlTemplate>
@@ -30,14 +32,16 @@
                 <Setter Property="Background" Value="#482E7B"/>
             </Trigger>
 
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="#8E8BA3"/>
-                <Setter Property="Foreground" Value="LightGray"/>
-            </Trigger>
 
             <Trigger Property="IsMouseCaptured" Value="True">
                 <Setter Property="Background" Value="#5E4A7B"/>
             </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Background" Value="#474552"/>
+            </Trigger>
+
         </Style.Triggers>
 
     </Style>

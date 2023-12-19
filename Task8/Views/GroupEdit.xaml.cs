@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Task8.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ToolBar.xaml
+    /// Логика взаимодействия для GroupEdit.xaml
     /// </summary>
-    public partial class ToolBar : UserControl
+    public partial class GroupEdit : UserControl
     {
-        public ToolBar()
+        public GroupEdit()
         {
             InitializeComponent();
         }

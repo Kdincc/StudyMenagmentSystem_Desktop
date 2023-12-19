@@ -7,15 +7,15 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
 {
-    public interface ICourseRepository
+    public interface IRepositoryService
     {
         public IEnumerable<Course> Courses { get; }
 
+        public IEnumerable<Teacher> Teachers { get; }
+
+        public void Remove(Group group);
+
         public Course Find(int id);
-
-        public void Add(Course entity);
-
-        public void Remove(Course entity);
 
         public void SaveChanges();
     }

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 
@@ -11,28 +10,35 @@ namespace Task8.BL.Models
     public class CourseEditModel : ICourseEditModel
     {
         private Course _currentCourse = new();
-        private readonly ICourseRepository _repository;
+        private readonly ICourseEditMessager _messager;
+        private readonly IDocxService _docxBuilder;
+        private readonly IPDFService _pdfBuilder;
+        private readonly ICsvService _csvService;
+        private readonly IRepositoryService _repository;
 
-        public CourseEditModel(ICourseRepository repository)
+        public CourseEditModel(IRepositoryService repository, ICourseEditMessager messager, IDocxService docxBuilder, IPDFService pdfBuilder, ICsvService csvService)
         {
+            _messager = messager;
+            _docxBuilder = docxBuilder;
+            _pdfBuilder = pdfBuilder;
+            _csvService = csvService;
             _repository = repository;
         }
 
         public IEnumerable<Group> Groups => _currentCourse.Groups;
 
-        public void BuildDocxGroupList(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BuildPDFGroupList(string path)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Teacher> Teachers => _repository.Teachers;
 
         public void CreateGroup(string groupName)
         {
-            throw new NotImplementedException();
+            Group group = new()
+            {
+                Name = groupName,
+                Course = _currentCourse,
+            };
+
+            _currentCourse.Groups.Add(group);
+            _repository.SaveChanges();
         }
 
         public void InitCourse(Course course)
@@ -42,12 +48,54 @@ namespace Task8.BL.Models
 
         public void RemoveGroup(Group group)
         {
-            throw new NotImplementedException();
+            if (group.Students.Count > 0)
+            {
+                _messager.CantRemoveGroupMessage();
+                return;
+            }
+
+            _repository.Remove(group);
+            _repository.SaveChanges();
         }
 
-        public void SaveChanges()
+        public void BuildDocxReport(string savePath, Group group)
         {
-            throw new NotImplementedException();
+            _docxBuilder.BuidGroupReport(savePath, _currentCourse.Name, group);
+
+            _messager.ReportCompleteMessage();
+        }
+
+        public void SaveChangesFor(Group group)
+        {
+            _repository.SaveChanges();
+        }
+
+        public void BuildPDFReport(string savePath, Group group)
+        {
+            _pdfBuilder.BuidGroupReport(savePath, _currentCourse.Name, group);
+
+            _messager.ReportCompleteMessage();
+        }
+
+        public void ImportStudents(Group group, string csvFilePath)
+        {
+            var results = _csvService.GetStudentsFrom(csvFilePath);
+
+            if(results.Error != null) 
+            {
+                _messager.CsvReadingErrorMessage();
+
+                return;
+            }
+
+            group.Students = results.Records.ToList();
+
+            _repository.SaveChanges();
+        }
+
+        public void ExportStudents(Group group, string exportPath)
+        {
+            _csvService.WriteStudentsTo(group.Students, exportPath);
         }
     }
 }

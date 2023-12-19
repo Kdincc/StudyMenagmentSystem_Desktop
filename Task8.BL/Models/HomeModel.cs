@@ -10,9 +10,9 @@ namespace Task8.BL.Models
 {
     public class HomeModel : IHomeModel
     {
-        private readonly ICourseRepository _repository;
+        private readonly IRepositoryService _repository;
 
-        public HomeModel(ICourseRepository repository) 
+        public HomeModel(IRepositoryService repository) 
         {
             _repository = repository;
         }
