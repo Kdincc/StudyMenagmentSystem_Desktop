@@ -56,7 +56,7 @@
                                     Margin="0"
                                     Background="Transparent"
                                     FontSize="16"
-                                    Text="{Binding NewStudentName, Mode= OneWayToSource }"
+                                    Text="{Binding NewStudentName, Mode= TwoWay }"
                                     Style="{StaticResource ModernTextBox}"/>
                             </Border>
 
@@ -79,7 +79,7 @@
                                     Margin="0"
                                     Background="Transparent"
                                     FontSize="16"
-                                    Text="{Binding NewStudentLastName, Mode= OneWayToSource }"
+                                    Text="{Binding NewStudentLastName, Mode= TwoWay }"
                                     Style="{StaticResource ModernTextBox}"/>
                             </Border>
                         </Grid>

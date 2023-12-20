@@ -15,6 +15,8 @@ namespace Task8.ViewModels
 {
     public class GroupEditViewModel : BindableBase
     {
+        private string _newStudentName;
+        private string _newStudentLastName;
         private readonly IGroupEditModel _model;
 
         public GroupEditViewModel(IGroupEditModel model, IEventAggregator eventAggregator)
@@ -22,25 +24,36 @@ namespace Task8.ViewModels
             _model = model;
             Save = new(SaveCommand);
             Remove = new(RemoveCommand);
+            Add = new(AddCommand);
             eventAggregator.GetEvent<EditNavigateEvent>().Subscribe(OnNavigate);
         }
 
+        #region Props
+
         public ObservableCollection<Student> Students => new(_model.Students);
 
-        private void OnNavigate(object group)
+        public string NewStudentName
         {
-            if (group is Group)
-            {
-                _model.InitGroup(group as Group);
-                RaisePropertyChanged(nameof(Students));
-            }
+            get { return _newStudentName; }
+            set { _newStudentName = value; }
         }
+
+        public string NewStudentLastName
+        {
+            get { return _newStudentLastName; }
+            set { _newStudentLastName = value; }
+        }
+
+
+        #endregion
 
         #region Commands
 
         public DelegateCommand<Student> Save { get; }
 
         public DelegateCommand<Student> Remove { get; }
+
+        public DelegateCommand Add { get; }
 
         private void SaveCommand(Student student)
         {
@@ -53,6 +66,28 @@ namespace Task8.ViewModels
             RaisePropertyChanged(nameof(Students));
         }
 
+        private void AddCommand()
+        {
+            _model.CreateStudent(NewStudentName, NewStudentLastName);
+
+            NewStudentName = "";
+            NewStudentLastName = "";
+
+            RaisePropertyChanged(nameof(Students));
+            RaisePropertyChanged(nameof(NewStudentName));
+            RaisePropertyChanged(nameof(NewStudentLastName));
+        }
+
         #endregion
+
+        private void OnNavigate(object group)
+        {
+            if (group is Group)
+            {
+                _model.InitGroup(group as Group);
+                RaisePropertyChanged(nameof(Students));
+            }
+        }
+
     }
 }
