@@ -22,6 +22,8 @@ namespace Task8.BL.Models
         public void CreateTeacher(string name, string surname)
         {
             _repositoryService.Add(new Teacher { Name = name, Surname = surname });
+
+            _repositoryService.SaveChanges();
         }
 
         public void Remove(Teacher teacher)

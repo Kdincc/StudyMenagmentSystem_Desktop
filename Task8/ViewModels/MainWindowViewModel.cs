@@ -27,7 +27,6 @@ namespace Task8.ViewModels
             MinimizeCommand = new(Minimize);
             NavigateToHomeCommand = new(NavigateToHome);
             NavigateToEdit = new(NavigateToEditCommand);
-            NavigateToTeachers = new(NavigateToTeachersCommand);
             _eventAggregator.GetEvent<TreeItemSelectedEvent>().Subscribe(OnTreeItemSelected);
         }
 
@@ -70,12 +69,7 @@ namespace Task8.ViewModels
 
         public DelegateCommand NavigateToEdit { get; }
 
-        public DelegateCommand NavigateToTeachers {  get; }
 
-        private void NavigateToTeachersCommand()
-        {
-            _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), nameof(Teachers));
-        }
 
         private void NavigateToHome()
         {

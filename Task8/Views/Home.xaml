@@ -11,7 +11,17 @@
     <StackPanel>
 
         <Border Background="#35343D" Height="100">
-            
+            <Button  Margin="0,0,0,0"
+                     Height="50"
+                     FontSize="16"
+                     Foreground="White"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Left"
+                     Width="220"
+                     Content="Teachers"
+                     FontFamily="/Fonts/#Poppins"
+                     Style="{StaticResource MenuButton}"
+                     Command="{Binding NavigateToTeachers}"/>
         </Border>
         
         <Border Height="480" 
