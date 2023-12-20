@@ -60,7 +60,7 @@
             </Grid>
 
             <TextBlock Grid.Row="0" 
-                       Text="Training portal&#x0a;     manager"
+                       Text="Home"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="22"
