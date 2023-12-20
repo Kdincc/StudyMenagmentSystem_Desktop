@@ -1,12 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
@@ -60,7 +55,7 @@ namespace Task8.ViewModels
             _model.SaveChangesFor(student);
         }
 
-        private void RemoveCommand(Student student) 
+        private void RemoveCommand(Student student)
         {
             _model.RemoveStudent(student);
             RaisePropertyChanged(nameof(Students));

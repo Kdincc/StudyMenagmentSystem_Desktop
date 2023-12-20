@@ -93,6 +93,16 @@
                      ToolTip="Navigate to edit page of selected item">
 
                 </Button>
+                
+                <Button Grid.Column="0" 
+                     Grid.Row="1"
+                     Height="50"
+                     FontSize="16"
+                     Foreground="White"
+                     Content="Teachers"
+                     FontFamily="/Fonts/#Poppins"
+                     Style="{StaticResource MenuButton}"
+                     Command="{Binding NavigateToHomeCommand}"/>
             </StackPanel>
 
         </Grid>
