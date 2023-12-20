@@ -26,7 +26,7 @@ namespace Task8.BL.Models
 
         public void Remove(Teacher teacher)
         {
-            _repositoryService.Teachers.ToList().Remove(teacher);
+            _repositoryService.Remove(teacher);
 
             _repositoryService.SaveChanges();
         }
