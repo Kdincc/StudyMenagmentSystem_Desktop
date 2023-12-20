@@ -17,7 +17,7 @@ namespace Task8.BL.Models
             _repositoryService = repositoryService;
         }
 
-        public IEnumerable<Teacher> Teachers => throw new NotImplementedException();
+        public IEnumerable<Teacher> Teachers => _repositoryService.Teachers;
 
         public void Remove(Teacher teacher)
         {
