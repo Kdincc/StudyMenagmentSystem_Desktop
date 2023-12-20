@@ -68,11 +68,11 @@ namespace Task8.ViewModels
             _teachersModel.CreateTeacher(NewTeacherName, NewTeacherSurname);
 
             NewTeacherName = "";
-            NewTeacherName = "";
+            NewTeacherSurname = "";
 
             RaisePropertyChanged(nameof(Teachers));
             RaisePropertyChanged(nameof(NewTeacherName));
-            RaisePropertyChanged(nameof(NewTeacherName));
+            RaisePropertyChanged(nameof(NewTeacherSurname));
         }
 
         #endregion
