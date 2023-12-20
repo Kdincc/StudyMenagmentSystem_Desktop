@@ -28,7 +28,7 @@ namespace Task8.BL.Models
 
         public void SaveChangesFor(Teacher teacher)
         {
-            throw new NotImplementedException();
+            _repositoryService.SaveChanges();
         }
     }
 }
