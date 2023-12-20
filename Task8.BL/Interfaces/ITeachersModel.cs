@@ -13,6 +13,8 @@ namespace Task8.BL.Interfaces
 
         public void SaveChangesFor(Teacher teacher);
 
+        public void CreateTeacher(string name, string surname);
+
         public void Remove(Teacher teacher);
     }
 }
