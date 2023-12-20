@@ -20,6 +20,9 @@ namespace Task8.ViewModels
         public TeachersViewModel(ITeachersModel teachersModel)
         {
             _teachersModel = teachersModel;
+            Save = new(SaveCommand);
+            Add = new(AddCommand);
+            Remove = new(RemoveCommand);
         }
 
         #region Props
@@ -43,9 +46,9 @@ namespace Task8.ViewModels
 
         #region Commands
 
-        public DelegateCommand<Student> Save { get; }
+        public DelegateCommand<Teacher> Save { get; }
 
-        public DelegateCommand<Student> Remove { get; }
+        public DelegateCommand<Teacher> Remove { get; }
 
         public DelegateCommand Add { get; }
 
@@ -62,7 +65,7 @@ namespace Task8.ViewModels
 
         private void AddCommand()
         {
-            _teachersModel.CreateTeachers(NewTeacherName, NewTeacherSurname);
+            _teachersModel.CreateTeacher(NewTeacherName, NewTeacherSurname);
 
             NewTeacherName = "";
             NewTeacherName = "";
