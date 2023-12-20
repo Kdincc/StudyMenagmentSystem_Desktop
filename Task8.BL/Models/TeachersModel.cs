@@ -21,7 +21,9 @@ namespace Task8.BL.Models
 
         public void Remove(Teacher teacher)
         {
-            throw new NotImplementedException();
+            _repositoryService.Teachers.ToList().Remove(teacher);
+
+            _repositoryService.SaveChanges();
         }
 
         public void SaveChangesFor(Teacher teacher)
