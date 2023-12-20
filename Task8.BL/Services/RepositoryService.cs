@@ -20,6 +20,11 @@ namespace Task8.BL
 
         public IEnumerable<Teacher> Teachers => _context.Teachers.Include(t => t.Groups);
 
+        public void Add(Teacher teacher)
+        {
+            _context.Teachers.Add(teacher);
+        }
+
         public Course Find(int id)
         {
             return _context.Courses.FirstOrDefault(c => c.CourseId == id);
@@ -33,6 +38,11 @@ namespace Task8.BL
         public void Remove(Student student)
         {
             _context.Students.Remove(student);
+        }
+
+        public void Remove(Teacher teacher)
+        {
+            _context.Teachers.Remove(teacher);
         }
 
         public void SaveChanges()
