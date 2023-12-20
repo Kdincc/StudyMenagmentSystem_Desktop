@@ -19,6 +19,11 @@ namespace Task8.BL.Models
 
         public IEnumerable<Teacher> Teachers => _repositoryService.Teachers;
 
+        public void CreateTeacher(string name, string surname)
+        {
+            _repositoryService.Teachers.ToList().Add(new Teacher { Name = name, Surname = surname });
+        }
+
         public void Remove(Teacher teacher)
         {
             _repositoryService.Teachers.ToList().Remove(teacher);
