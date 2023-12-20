@@ -102,7 +102,7 @@
                      Content="Teachers"
                      FontFamily="/Fonts/#Poppins"
                      Style="{StaticResource MenuButton}"
-                     Command="{Binding NavigateToHomeCommand}"/>
+                     Command="{Binding NavigateToTeachers}"/>
             </StackPanel>
 
         </Grid>

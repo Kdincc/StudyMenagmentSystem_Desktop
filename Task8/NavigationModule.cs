@@ -26,6 +26,7 @@ namespace Task8
             containerRegistry.RegisterForNavigation<Home>();
             containerRegistry.RegisterForNavigation<CourseEdit>();
             containerRegistry.RegisterForNavigation<GroupEdit>();
+            containerRegistry.RegisterForNavigation<Teachers>();
         }
     }
 
