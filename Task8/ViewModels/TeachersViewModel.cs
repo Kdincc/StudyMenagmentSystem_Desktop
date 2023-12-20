@@ -13,8 +13,8 @@ namespace Task8.ViewModels
 {
     public class TeachersViewModel : BindableBase
     {
-        private string _newStudentName;
-        private string _newStudentLastName;
+        private string _newTeacherName;
+        private string _newTeacherSurname;
         private readonly ITeachersModel _teachersModel;
 
         public TeachersViewModel(ITeachersModel teachersModel)
@@ -31,14 +31,14 @@ namespace Task8.ViewModels
 
         public string NewTeacherName
         {
-            get { return _newStudentName; }
-            set { _newStudentName = value; }
+            get { return _newTeacherName; }
+            set { _newTeacherName = value; }
         }
 
         public string NewTeacherSurname
         {
-            get { return _newStudentLastName; }
-            set { _newStudentLastName = value; }
+            get { return _newTeacherSurname; }
+            set { _newTeacherSurname = value; }
         }
 
 
