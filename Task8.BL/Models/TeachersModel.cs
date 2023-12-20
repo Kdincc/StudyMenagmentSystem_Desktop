@@ -10,6 +10,13 @@ namespace Task8.BL.Models
 {
     public class TeachersModel : ITeachersModel
     {
+        private readonly IRepositoryService _repositoryService;
+
+        public TeachersModel(IRepositoryService repositoryService)
+        {
+            _repositoryService = repositoryService;
+        }
+
         public IEnumerable<Teacher> Teachers => throw new NotImplementedException();
 
         public void Remove(Teacher teacher)
