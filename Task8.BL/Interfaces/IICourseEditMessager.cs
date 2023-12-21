@@ -13,5 +13,7 @@ namespace Task8.BL.Interfaces
         public void ReportCompleteMessage();
 
         public void CsvReadingErrorMessage();
+
+        public void EmptyGroupNameMessage();
     }
 }
