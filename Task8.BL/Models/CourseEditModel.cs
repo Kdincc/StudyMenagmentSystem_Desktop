@@ -49,7 +49,7 @@ namespace Task8.BL.Models
 
         public void InitCourse(Course course)
         {
-            _currentCourse = _repository.Find(course.CourseId);
+            _currentCourse = course;
         }
 
         public void RemoveGroup(Group group)

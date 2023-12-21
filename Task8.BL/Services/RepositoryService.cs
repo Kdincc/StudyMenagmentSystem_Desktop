@@ -25,11 +25,6 @@ namespace Task8.BL
             _context.Teachers.Add(teacher);
         }
 
-        public Course Find(int id)
-        {
-            return _context.Courses.FirstOrDefault(c => c.CourseId == id);
-        }
-
         public void Remove(Group group)
         {
             _context.Groups.Remove(group);
