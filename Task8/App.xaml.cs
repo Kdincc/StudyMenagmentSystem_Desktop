@@ -33,7 +33,6 @@ namespace Task8
             containerRegistry.Register<IPDFService, PDFService>();
             containerRegistry.Register<ICsvService, CsvService>();
             containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
-            containerRegistry.Register<ICourseEditMessager, CourseEditMessager>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

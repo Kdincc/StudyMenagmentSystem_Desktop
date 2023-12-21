@@ -10,13 +10,12 @@ namespace Task8.BL.Models
     public class CourseEditModel : ICourseEditModel
     {
         private Course _currentCourse = new();
-        private readonly ICourseEditMessager _messager;
         private readonly IDocxService _docxBuilder;
         private readonly IPDFService _pdfBuilder;
         private readonly ICsvService _csvService;
         private readonly IRepositoryService _repository;
 
-        public CourseEditModel(IRepositoryService repository, ICourseEditMessager messager, IDocxService docxBuilder, IPDFService pdfBuilder, ICsvService csvService)
+        public CourseEditModel(IRepositoryService repository, IDocxService docxBuilder, IPDFService pdfBuilder, ICsvService csvService)
         {
             _messager = messager;
             _docxBuilder = docxBuilder;
@@ -33,7 +32,7 @@ namespace Task8.BL.Models
         {
             if (string.IsNullOrEmpty(groupName)) 
             {
-                _messager.EmptyGroupNameMessage();
+                CourseEditMessager.EmptyGroupNameMessage();
 
                 return;
             }
@@ -58,7 +57,7 @@ namespace Task8.BL.Models
         {
             if (group.Students.Count > 0)
             {
-                _messager.CantRemoveGroupMessage();
+                CourseEditMessager.CantRemoveGroupMessage();
                 return;
             }
 
@@ -70,7 +69,7 @@ namespace Task8.BL.Models
         {
             _docxBuilder.BuidGroupReport(savePath, _currentCourse.Name, group);
 
-            _messager.ReportCompleteMessage();
+            CourseEditMessager.ReportCompleteMessage();
         }
 
         public void SaveChangesFor(Group group)
@@ -82,7 +81,7 @@ namespace Task8.BL.Models
         {
             _pdfBuilder.BuidGroupReport(savePath, _currentCourse.Name, group);
 
-            _messager.ReportCompleteMessage();
+            CourseEditMessager.ReportCompleteMessage();
         }
 
         public void ImportStudents(Group group, string csvFilePath)
@@ -91,7 +90,7 @@ namespace Task8.BL.Models
 
             if(results.Error != null) 
             {
-                _messager.CsvReadingErrorMessage();
+                CourseEditMessager.CsvReadingErrorMessage();
 
                 return;
             }
