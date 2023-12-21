@@ -20,6 +20,11 @@ namespace Task8.BL
             MessageBox.Show("Csv file not in correct format !", "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        public void EmptyGroupNameMessage()
+        {
+            MessageBox.Show("Group must have name !", "", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
         public void ReportCompleteMessage()
         {
             MessageBox.Show("Report is complete !");
