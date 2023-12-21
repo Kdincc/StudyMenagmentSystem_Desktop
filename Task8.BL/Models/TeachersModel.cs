@@ -21,6 +21,11 @@ namespace Task8.BL.Models
 
         public void CreateTeacher(string name, string surname)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname))
+            {
+                TeachersMessager.EmptyTeacherNameMessage();
+            }
+
             _repositoryService.Add(new Teacher { Name = name, Surname = surname });
 
             _repositoryService.SaveChanges();
