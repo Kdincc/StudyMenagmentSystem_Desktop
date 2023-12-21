@@ -35,6 +35,7 @@ namespace Task8.BL.Models
             {
                 Name = groupName,
                 Course = _currentCourse,
+                Teacher = Teachers.FirstOrDefault()
             };
 
             _currentCourse.Groups.Add(group);
