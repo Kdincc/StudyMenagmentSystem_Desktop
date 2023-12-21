@@ -39,13 +39,13 @@ namespace Task8.BL.Services
             run.FontSize = fontSize;
         }
 
-        private static void BuildHeader(XWPFDocument document, string titleText, int fontSize, bool isBold = false)
+        private static void BuildHeader(XWPFDocument document, string headerText, int fontSize, bool isBold = false)
         {
             var paragraph = document.CreateParagraph();
             paragraph.Alignment = ParagraphAlignment.CENTER;
 
             var run = paragraph.CreateRun();
-            run.SetText(titleText);
+            run.SetText(headerText);
             ConfigureRun(run, DocumentFonts.TimesNewRoman, fontSize, isBold);
         }
 

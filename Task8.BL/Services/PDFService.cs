@@ -61,7 +61,6 @@ namespace Task8.BL
             int studentCounter = 1;
             List list = new();
 
-            list.SetListSymbol("");
             list.SetFontSize(fontSize);
             list.SetFontFamily(DocumentFonts.TimesNewRoman.ToString());
 
