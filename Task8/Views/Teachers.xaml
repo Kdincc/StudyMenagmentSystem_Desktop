@@ -38,7 +38,8 @@
                                        Grid.Column="0"
                                        Margin="5"
                                        FontSize="16"
-                                       Text="Name:">
+                                       Text="Name:"
+                                       TextAlignment="Left">
 
                             </TextBlock>
 
@@ -61,7 +62,8 @@
                                        Grid.Column="0"
                                        Margin="5"
                                        FontSize="16"
-                                       Text="Surname:">
+                                       Text="Surname:"
+                                       TextAlignment="Left">
 
                             </TextBlock>
 
