@@ -31,6 +31,13 @@ namespace Task8.BL.Models
 
         public void CreateGroup(string groupName)
         {
+            if (string.IsNullOrEmpty(groupName)) 
+            {
+                _messager.EmptyGroupNameMessage();
+
+                return;
+            }
+
             Group group = new()
             {
                 Name = groupName,
