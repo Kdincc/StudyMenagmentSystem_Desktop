@@ -107,7 +107,7 @@
                                  Margin="0"
                                  Background="Transparent"
                                  FontSize="16"
-                                 Text="{Binding NewGroupName, Mode= OneWayToSource }"
+                                 Text="{Binding NewGroupName, Mode= TwoWay }"
                                  Style="{StaticResource ModernTextBox}"/>
                         </Border>
 
