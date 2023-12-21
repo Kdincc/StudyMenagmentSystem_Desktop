@@ -24,6 +24,8 @@ namespace Task8.BL.Models
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname))
             {
                 TeachersMessager.EmptyTeacherNameMessage();
+
+                return;
             }
 
             _repositoryService.Add(new Teacher { Name = name, Surname = surname });

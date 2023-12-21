@@ -25,6 +25,8 @@ namespace Task8.BL.Models
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(lastName)) 
             {
                 GroupEditMessager.EmptyStudentNameMessage();
+
+                return;
             }
 
             _currentGroup.Students.Add(new Student { FirstName = name, LastName = lastName, Group = _currentGroup });
