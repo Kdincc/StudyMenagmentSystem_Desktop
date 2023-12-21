@@ -85,7 +85,7 @@
                         <Button Style="{StaticResource ToolBarButtonStyle}"
                                 Width="140"
                                 Height="77"
-                                Content="Create teaher"
+                                Content="Create teacher"
                                 Margin="5,5,5,5"
                                 Foreground="White"
                                 FontSize="16"
