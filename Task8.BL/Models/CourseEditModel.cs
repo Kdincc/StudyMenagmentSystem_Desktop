@@ -17,7 +17,6 @@ namespace Task8.BL.Models
 
         public CourseEditModel(IRepositoryService repository, IDocxService docxBuilder, IPDFService pdfBuilder, ICsvService csvService)
         {
-            _messager = messager;
             _docxBuilder = docxBuilder;
             _pdfBuilder = pdfBuilder;
             _csvService = csvService;
