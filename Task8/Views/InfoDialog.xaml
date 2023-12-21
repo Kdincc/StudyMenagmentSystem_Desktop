@@ -20,7 +20,7 @@
             </Border.Background>
 
             <Border Margin="15">
-                <Image>
+                <Image Source="{Binding HomePageInfoImage}">
                     
                 </Image>
             </Border>
