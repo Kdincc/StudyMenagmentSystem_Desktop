@@ -145,7 +145,11 @@ namespace Task8.ViewModels
         private void AddCommand()
         {
             _courseEditModel.CreateGroup(NewGroupName);
+
+            NewGroupName = "";
+
             RaisePropertyChanged(nameof(Groups));
+            RaisePropertyChanged(nameof(NewGroupName));
         }
 
         #endregion
