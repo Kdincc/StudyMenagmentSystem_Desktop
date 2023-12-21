@@ -33,7 +33,7 @@ namespace Task8.BL.Models
             _repositoryService.SaveChanges();
         }
 
-        public void Remove(Teacher teacher)
+        public void RemoveTeacher(Teacher teacher)
         {
             _repositoryService.Remove(teacher);
 

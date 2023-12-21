@@ -59,7 +59,7 @@ namespace Task8.ViewModels
 
         private void RemoveCommand(Teacher teacher)
         {
-            _teachersModel.Remove(teacher);
+            _teachersModel.RemoveTeacher(teacher);
             RaisePropertyChanged(nameof(Teachers));
         }
 

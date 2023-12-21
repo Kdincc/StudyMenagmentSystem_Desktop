@@ -15,6 +15,6 @@ namespace Task8.BL.Interfaces
 
         public void CreateTeacher(string name, string surname);
 
-        public void Remove(Teacher teacher);
+        public void RemoveTeacher(Teacher teacher);
     }
 }
