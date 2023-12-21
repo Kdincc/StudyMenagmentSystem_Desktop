@@ -1,6 +1,7 @@
 ﻿using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,5 +17,7 @@ namespace Task8.ViewModels
         {
             _infoDialog = infoDialog;
         }
+
+        public Bitmap HomePageInfoImage => _infoDialog.HomePageInfoImage;
     }
 }
