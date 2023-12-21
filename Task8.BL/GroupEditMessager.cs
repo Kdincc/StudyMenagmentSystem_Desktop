@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Task8.BL.Properties;
 
 namespace Task8.BL
 {
@@ -11,7 +12,7 @@ namespace Task8.BL
     {
         public static void EmptyStudentNameMessage() 
         {
-            MessageBox.Show("Name and surname of the student can`t be empty !", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Messages.EmptyStudentNameMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

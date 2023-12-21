@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Task8.BL.Interfaces;
+using Task8.BL.Properties;
 
 namespace Task8.BL
 {
@@ -12,22 +14,22 @@ namespace Task8.BL
     {
         public static void CantRemoveGroupMessage()
         {
-            MessageBox.Show("A group can not be deleted if there is at least one student in this group.");
+            MessageBox.Show(Messages.CantRemoveGroupMessage);
         }
 
         public static void CsvReadingErrorMessage()
         {
-            MessageBox.Show("Csv file not in correct format !", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Messages.CsvReadingErrorMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public static void EmptyGroupNameMessage()
         {
-            MessageBox.Show("Group must have name !", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Messages.EmptyGroupNameMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public static void ReportCompleteMessage()
         {
-            MessageBox.Show("Report is complete !");
+            MessageBox.Show(Messages.ReportCompleteMessage);
         }
 
     }
