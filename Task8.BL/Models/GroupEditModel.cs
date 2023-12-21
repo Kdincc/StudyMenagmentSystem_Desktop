@@ -22,6 +22,11 @@ namespace Task8.BL.Models
          
         public void CreateStudent(string name, string lastName)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(lastName)) 
+            {
+                GroupEditMessager.EmptyStudentNameMessage();
+            }
+
             _currentGroup.Students.Add(new Student { FirstName = name, LastName = lastName, Group = _currentGroup });
             _repositoryService.SaveChanges();
         }
