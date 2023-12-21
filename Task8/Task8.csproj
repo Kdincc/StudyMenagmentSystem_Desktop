@@ -15,4 +15,17 @@
     <ProjectReference Include="..\Task8.BL\Task8.BL.csproj" />
     <ProjectReference Include="..\Task8.Data\Task8.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\InfoImages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InfoImages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\InfoImages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InfoImages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
