@@ -2,6 +2,7 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using System;
 using System.Collections.ObjectModel;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
@@ -23,6 +24,13 @@ namespace Task8.ViewModels
             _regionManager = regionManager;
             NavigateToTeachers = new(NavigateToTeachersCommand);
             SelectedItemChangedCommand = new(SelectedItemChanged);
+
+            _eventAggregator.GetEvent<HomeNavigateEvent>().Subscribe(OnNavigating);
+        }
+
+        private void OnNavigating()
+        {
+            RaisePropertyChanged(nameof(Courses));
         }
 
         public ObservableCollection<Course> Courses => new(_homeModel.Courses);

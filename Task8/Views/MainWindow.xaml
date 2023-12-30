@@ -99,8 +99,20 @@
                      ToolTip="Navigate to edit page of selected item">
 
                 </Button>
-                
 
+                <Button Grid.Column="0" 
+                     Grid.Row="1"
+                     IsEnabled="{Binding IsEditButtonActive, Mode=TwoWay}"
+                     Height="50"
+                     FontSize="16"
+                     Foreground="White"
+                     Content="Info"
+                     FontFamily="/Fonts/#Poppins"
+                     Style="{StaticResource MenuButton}"
+                     Command="{Binding InfoDialogCommand}"
+                     ToolTip="Opend info about current page">
+
+                </Button>
             </StackPanel>
 
         </Grid>

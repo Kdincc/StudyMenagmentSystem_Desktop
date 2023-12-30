@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,51 @@ using Task8.BL.Interfaces;
 
 namespace Task8.ViewModels
 {
-    public class InfoDialogViewModel : BindableBase
+    public class InfoDialogViewModel : BindableBase, IDialogAware
     {
-        private readonly IInfoDialog _infoDialog;
+        private string _infoImage;
 
-        public InfoDialogViewModel(IInfoDialog infoDialog)
+        public InfoDialogViewModel()
         {
-            _infoDialog = infoDialog;
+            CloseCommand = new(CloseDialog);
         }
 
-        public Bitmap HomePageInfoImage => _infoDialog.HomePageInfoImage;
+        public string InfoImage
+        {
+            get { return _infoImage; }
+            set { SetProperty(ref _infoImage, value); }
+        }
+
+        public string Title => "Info";
+
+        public event Action<IDialogResult> RequestClose;
+
+        public DelegateCommand CloseCommand { get; }
+
+        private void CloseDialog()
+        {
+            ButtonResult result = ButtonResult.None;
+
+            RaiseRequestClose(new DialogResult(result));
+        }
+
+        public bool CanCloseDialog()
+        {
+            return true;
+        }
+
+        public void OnDialogClosed()
+        {
+        }
+
+        public void OnDialogOpened(IDialogParameters parameters)
+        {
+            InfoImage = parameters.GetValue<string>("Image");
+        }
+
+        public void RaiseRequestClose(IDialogResult result)
+        {
+            RequestClose.Invoke(result);
+        }
     }
 }

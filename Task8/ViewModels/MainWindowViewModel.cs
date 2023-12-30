@@ -2,10 +2,13 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using System;
+using System.Resources;
 using System.Windows;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
+using Task8.Properties;
 using Task8.Views;
 
 namespace Task8.ViewModels
@@ -17,16 +20,21 @@ namespace Task8.ViewModels
         private object _selectedItem;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
+        private readonly IDialogService _dialogService;
 
-        public MainWindowViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public MainWindowViewModel(IRegionManager regionManager, IEventAggregator eventAggregator, IDialogService dialogService)
         {
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
+            _dialogService = dialogService;
+
             DragWindowCommand = new(DragWindow);
             ExitCommand = new(Exit);
             MinimizeCommand = new(Minimize);
             NavigateToHomeCommand = new(NavigateToHome);
             NavigateToEdit = new(NavigateToEditCommand);
+            InfoDialogCommand = new(OpenInfoDialog);
+
             _eventAggregator.GetEvent<TreeItemSelectedEvent>().Subscribe(OnTreeItemSelected);
         }
 
@@ -69,11 +77,12 @@ namespace Task8.ViewModels
 
         public DelegateCommand NavigateToEdit { get; }
 
-
+        public DelegateCommand InfoDialogCommand { get; }
 
         private void NavigateToHome()
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), nameof(Home));
+            _eventAggregator.GetEvent<HomeNavigateEvent>().Publish();
         }
 
         private void NavigateToEditCommand()
@@ -97,6 +106,16 @@ namespace Task8.ViewModels
         private void DragWindow()
         {
             Application.Current.MainWindow.DragMove();
+        }
+
+        private void OpenInfoDialog()
+        {
+            DialogParameters parameters = new()
+            {
+                { "Image", @"E:\Task8\Task8\Resources\Снимок.PNG" }
+            };
+
+            _dialogService.ShowDialog(DialogNames.InfoDialog.ToString(), parameters, r => { });
         }
 
         #endregion

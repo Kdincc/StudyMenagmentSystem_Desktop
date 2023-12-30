@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Task8.BL.Properties {
+namespace Task8.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Task8.BL.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task8.BL.Properties.Images", typeof(Images).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task8.Properties.Images", typeof(Images).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
