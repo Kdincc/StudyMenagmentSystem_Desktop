@@ -9,7 +9,7 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
 {
-    public interface IPDFService
+    public interface IPdfService
     {
         public void BuidGroupReport(string savePath, string courseName, Group group);
     }

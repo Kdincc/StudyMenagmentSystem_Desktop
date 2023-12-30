@@ -30,7 +30,7 @@ namespace Task8
             containerRegistry.Register<IGroupEditModel, GroupEditModel>();
             containerRegistry.Register<ITeachersModel, TeachersModel>();
             containerRegistry.Register<IDocxService, DocxService>();
-            containerRegistry.Register<IPDFService, PDFService>();
+            containerRegistry.Register<IPdfService, PdfService>();
             containerRegistry.Register<ICsvService, CsvService>();
             containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
             containerRegistry.RegisterDialog<InfoDialog, InfoDialogViewModel>();

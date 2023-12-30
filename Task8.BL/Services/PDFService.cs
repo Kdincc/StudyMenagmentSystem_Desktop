@@ -11,7 +11,7 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL
 {
-    public class PDFService : IPDFService
+    public class PdfService : IPdfService
     {
         public void BuidGroupReport(string savePath, string courseName, Group group)
         {
