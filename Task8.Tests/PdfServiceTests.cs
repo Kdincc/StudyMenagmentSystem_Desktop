@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
+using Task8.Tests.Properties;
 
 namespace Task8.Tests
 {
@@ -45,7 +46,9 @@ namespace Task8.Tests
         [TestMethod]
         public void BuildGroupReport_IsCorrectContent()
         {
+            string text = File.ReadAllText(FilesPath.TestPdfReport);
 
+            Assert.AreEqual(text, "");
         }
     }
 }
