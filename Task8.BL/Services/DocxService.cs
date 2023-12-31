@@ -8,7 +8,7 @@ namespace Task8.BL.Services
 {
     public class DocxService : IDocxService
     {
-        public void BuidGroupReport(string savePath, string courseName, Group group)
+        public void WriteGroupReport(string savePath, string courseName, Group group)
         {
             const int listFontSize = 14;
             const int titleFontSize = 16;

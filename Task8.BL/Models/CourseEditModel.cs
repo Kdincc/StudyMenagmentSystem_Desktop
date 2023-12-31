@@ -66,7 +66,7 @@ namespace Task8.BL.Models
 
         public void BuildDocxReport(string savePath, Group group)
         {
-            _docxBuilder.BuidGroupReport(savePath, _currentCourse.Name, group);
+            _docxBuilder.WriteGroupReport(savePath, _currentCourse.Name, group);
 
             CourseEditMessager.ReportCompleteMessage();
         }
