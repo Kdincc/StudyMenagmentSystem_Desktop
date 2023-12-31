@@ -11,6 +11,6 @@ namespace Task8.BL.Interfaces
 {
     public interface IPdfService
     {
-        public void BuidGroupReport(string savePath, string courseName, Group group);
+        public void WriteGroupReport(string savePath, GroupReport groupReport);
     }
 }
