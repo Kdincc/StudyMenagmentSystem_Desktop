@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task8.BL.Interfaces;
+using Task8.BL.Services;
 using Task8.Data.Entity.Generated;
-using Task8.Tests.Properties;
 
 namespace Task8.Tests
 {
     [TestClass]
-    public class PdfServiceTests
+    public class DocxServiceTests
     {
-        private readonly IPdfService pdfService = new PdfService();
+        private readonly IDocxService docxService = new DocxService();
         private readonly GroupReport _testGroupReport;
 
-        public PdfServiceTests()
+        public DocxServiceTests()
         {
             List<Student> testList = new()
             {
@@ -24,6 +24,7 @@ namespace Task8.Tests
                 new Student { FirstName = "Patsy", LastName = "Stone" },
                 new Student { FirstName = "Minnie", LastName = "Paul" }
             };
+
             _testGroupReport = new("Test", "TestGroup", testList);
         }
 
@@ -32,14 +33,12 @@ namespace Task8.Tests
         {
             string pathToSave = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{_testGroupReport.GroupNameHeader}.pdf");
 
-            pdfService.WriteGroupReport(pathToSave, _testGroupReport);
+            docxService.WriteGroupReport(pathToSave, _testGroupReport);
             bool actual = File.Exists(pathToSave);
 
             Assert.IsTrue(actual);
 
             File.Delete(pathToSave);
         }
-
-     
     }
 }
