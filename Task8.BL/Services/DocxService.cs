@@ -1,6 +1,7 @@
 ﻿using NPOI.XWPF.UserModel;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 
@@ -8,17 +9,17 @@ namespace Task8.BL.Services
 {
     public class DocxService : IDocxService
     {
-        public void WriteGroupReport(string savePath, string courseName, Group group)
+        public void WriteGroupReport(string savePath, GroupReport report)
         {
             const int listFontSize = 14;
             const int titleFontSize = 16;
             XWPFDocument doc = new();
 
-            BuildHeader(doc, courseName, titleFontSize, true);
+            BuildHeader(doc, report.CourseNameHeader, titleFontSize, true);
 
-            BuildHeader(doc, group.Name, titleFontSize);
+            BuildHeader(doc, report.GroupNameHeader, titleFontSize);
 
-            BuildStudentsList(doc, group.Students, listFontSize);
+            BuildStudentsList(doc, report.Students.ToList(), listFontSize);
 
             using (FileStream fs = new(savePath, FileMode.Create, FileAccess.Write))
             {
