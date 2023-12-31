@@ -77,14 +77,5 @@ namespace Task8.Tests.Properties {
                 return ResourceManager.GetString("CsvIncorrectRecords", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на \Task8\Task8.Tests\TestFiles\TestPdfReport.pdf.
-        /// </summary>
-        internal static string TestPdfReport {
-            get {
-                return ResourceManager.GetString("TestPdfReport", resourceCulture);
-            }
-        }
     }
 }

@@ -123,7 +123,4 @@
   <data name="CsvIncorrectRecords" xml:space="preserve">
     <value>\Task8\Task8.Tests\TestFiles\CsvIncorrectRecords.csv</value>
   </data>
-  <data name="TestPdfReport" xml:space="preserve">
-    <value>\Task8\Task8.Tests\TestFiles\TestPdfReport.pdf</value>
-  </data>
 </root>

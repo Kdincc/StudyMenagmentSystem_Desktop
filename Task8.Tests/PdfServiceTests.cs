@@ -13,7 +13,7 @@ namespace Task8.Tests
     public class PdfServiceTests
     {
         private readonly IPdfService pdfService = new PdfService();
-        private readonly Group _testGroup = new();
+        private readonly GroupReport _testGroupReport;
         private readonly List<Student> _testList = new()
         {
             new Student { FirstName = "Patsy", LastName = "Stone" },
@@ -24,18 +24,15 @@ namespace Task8.Tests
 
         public PdfServiceTests()
         {
-            _testGroup.Students = _testList;
-            _testGroup.Name = "Test";
+            _testGroupReport = new("Test", "TestGroup", _testList);
         }
 
         [TestMethod]
         public void BuidGroupReport_IsCreated()
         {
-            string courseName = "TestCourse";
-            string pathToSave = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{_testGroup.Name}.pdf");
+            string pathToSave = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{_testGroupReport.GroupNameHeader}.pdf");
 
-            pdfService.BuidGroupReport(pathToSave, courseName, _testGroup);
-
+            pdfService.WriteGroupReport(pathToSave, _testGroupReport);
             bool actual = File.Exists(pathToSave);
 
             Assert.IsTrue(actual);
