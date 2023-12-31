@@ -6,6 +6,7 @@ using iText.Layout.Font;
 using iText.Layout.Properties;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 
@@ -13,7 +14,7 @@ namespace Task8.BL
 {
     public class PdfService : IPdfService
     {
-        public void BuidGroupReport(string savePath, string courseName, Group group)
+        public void WriteGroupReport(string savePath, GroupReport report)
         {
             using (PdfWriter writer = new(savePath))
             {
@@ -29,11 +30,11 @@ namespace Task8.BL
                     document.SetFont(PdfFontFactory.CreateFont());
                     document.SetFontProvider(fontProvider);
 
-                    BuildHeader(document, fontSize, courseName, true);
+                    BuildHeader(document, fontSize, report.CourseNameHeader, true);
 
-                    BuildHeader(document, fontSize, group.Name);
+                    BuildHeader(document, fontSize, report.GroupNameHeader);
 
-                    BuildStudentsList(document, fontSize, group.Students);
+                    BuildStudentsList(document, fontSize, report.Students.ToList());
                 }
             }
         }
