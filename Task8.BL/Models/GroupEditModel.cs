@@ -29,7 +29,7 @@ namespace Task8.BL.Models
                 return;
             }
 
-            _currentGroup.Students.Add(new Student { FirstName = name, LastName = lastName, Group = _currentGroup });
+            _repositoryService.Add(new Student { FirstName = name, LastName = lastName, Group = _currentGroup });
             _repositoryService.SaveChanges();
         }
 

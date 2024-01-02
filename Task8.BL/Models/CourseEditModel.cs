@@ -43,7 +43,7 @@ namespace Task8.BL.Models
                 Teacher = Teachers.FirstOrDefault()
             };
 
-            _currentCourse.Groups.Add(group);
+            _repository.Add(group);
             _repository.SaveChanges();
         }
 
