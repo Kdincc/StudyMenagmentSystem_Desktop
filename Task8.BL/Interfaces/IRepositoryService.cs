@@ -13,9 +13,13 @@ namespace Task8.BL.Interfaces
 
         public IEnumerable<Teacher> Teachers { get; }
 
-        public void Remove(Teacher teacher);
-
         public void Add(Teacher teacher);
+
+        public void Add(Group teacher);
+
+        public void Add(Student student);
+
+        public void Remove(Teacher teacher);
 
         public void Remove(Group group);
 
