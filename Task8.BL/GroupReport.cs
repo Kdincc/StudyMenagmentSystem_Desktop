@@ -7,7 +7,7 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL
 {
-    public class GroupReport
+    public class GroupReport : IEquatable<GroupReport>
     {
 		private readonly string _courseNameHeader;
 		private readonly string _groupNameHeadr;
@@ -26,5 +26,19 @@ namespace Task8.BL
 
 		public string CourseNameHeader => _courseNameHeader;
 
-	}
+        public bool Equals(GroupReport other)
+        {
+            return GroupNameHeader == other.GroupNameHeader && CourseNameHeader == other.CourseNameHeader && Students.SequenceEqual(other.Students);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as GroupReport);
+        }
+
+        public override int GetHashCode() 
+        {
+            return HashCode.Combine(GroupNameHeader, CourseNameHeader);
+        }
+    }
 }
