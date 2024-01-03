@@ -120,6 +120,9 @@
   <data name="CantRemoveGroupMessage" xml:space="preserve">
     <value>A group can not be deleted if there is at least one student in this group.</value>
   </data>
+  <data name="CsvInvalidHeaderMessageBase" xml:space="preserve">
+    <value>\nInvalid headers in file:</value>
+  </data>
   <data name="CsvReadingErrorMessage" xml:space="preserve">
     <value>Csv file not in correct format !</value>
   </data>

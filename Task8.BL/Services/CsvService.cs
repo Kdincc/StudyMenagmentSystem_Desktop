@@ -27,9 +27,13 @@ namespace Task8.BL
 
                         return new CsvReadingResults<Student>(students);
                     }
-                    catch (CsvHelperException ex)
+                    catch (HeaderValidationException ex)
                     {
                         return new CsvReadingResults<Student>(new List<Student>(), ex);
+                    }
+                    catch(CsvHelperException ex) 
+                    {
+                        return null;
                     }
                 }
             }

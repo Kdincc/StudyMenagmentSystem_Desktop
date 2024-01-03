@@ -87,9 +87,9 @@ namespace Task8.BL.Models
         {
             var results = _csvService.GetStudentsFrom(csvFilePath);
 
-            if(results.Error != null) 
+            if (results.IsInvalid)
             {
-                CourseEditMessager.CsvReadingErrorMessage();
+                CourseEditMessager.CsvReadingErrorMessage(results.Error.Message);
 
                 return;
             }
