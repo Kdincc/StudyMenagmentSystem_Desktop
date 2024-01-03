@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.RightsManagement;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 
@@ -49,11 +50,21 @@ namespace Task8.BL.Models
 
         public void InitCourse(Course course)
         {
+            if (course is null)
+            {
+                throw new ArgumentNullException(nameof(course));
+            }
+
             _currentCourse = course;
         }
 
         public void RemoveGroup(Group group)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             if (group.Students.Count > 0)
             {
                 CourseEditMessager.CantRemoveGroupMessage();
@@ -66,6 +77,16 @@ namespace Task8.BL.Models
 
         public void BuildDocxReport(string savePath, Group group)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
+            if (string.IsNullOrEmpty(savePath))
+            {
+                throw new ArgumentNullException(nameof(savePath));
+            }    
+
             _docxBuilder.WriteGroupReport(savePath, ReportBuilder.BuildGroupReport(group));
 
             CourseEditMessager.ReportCompleteMessage();
@@ -73,11 +94,21 @@ namespace Task8.BL.Models
 
         public void SaveChangesFor(Group group)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             _repository.SaveChanges();
         }
 
         public void BuildPDFReport(string savePath, Group group)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             _pdfBuilder.WriteGroupReport(savePath, ReportBuilder.BuildGroupReport(group));
 
             CourseEditMessager.ReportCompleteMessage();
@@ -85,6 +116,11 @@ namespace Task8.BL.Models
 
         public void ImportStudents(Group group, string csvFilePath)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             var results = _csvService.GetStudentsFrom(csvFilePath);
 
             if (results.IsInvalid)
@@ -101,6 +137,11 @@ namespace Task8.BL.Models
 
         public void ExportStudents(Group group, string exportPath)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             _csvService.WriteStudentsTo(group.Students, exportPath);
         }
     }

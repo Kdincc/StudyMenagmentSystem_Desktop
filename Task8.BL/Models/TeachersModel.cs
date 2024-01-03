@@ -35,6 +35,11 @@ namespace Task8.BL.Models
 
         public void RemoveTeacher(Teacher teacher)
         {
+            if (teacher is null) 
+            {
+                throw new ArgumentNullException(nameof(teacher));
+            }
+
             _repositoryService.Remove(teacher);
 
             _repositoryService.SaveChanges();
@@ -42,6 +47,11 @@ namespace Task8.BL.Models
 
         public void SaveChangesFor(Teacher teacher)
         {
+            if (teacher is null)
+            {
+                throw new ArgumentNullException(nameof(teacher));
+            }
+
             _repositoryService.SaveChanges();
         }
     }

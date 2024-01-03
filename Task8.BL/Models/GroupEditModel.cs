@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Forms.Fields.Merging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,20 +36,32 @@ namespace Task8.BL.Models
 
         public void InitGroup(Group group)
         {
-            if (group !=  null) 
+            if (group is null) 
             {
-                _currentGroup = group;
+                throw new ArgumentNullException(nameof(group));
             }
+
+            _currentGroup = group;
         }
 
         public void RemoveStudent(Student student)
         {
+            if (student is null) 
+            {
+                throw new ArgumentNullException(nameof(student));
+            }
+
             _repositoryService.Remove(student);
             _repositoryService.SaveChanges();
         }
 
         public void SaveChangesFor(Student student)
         {
+            if (student is null) 
+            {
+                throw new ArgumentNullException(nameof(student));
+            }
+
             _repositoryService.SaveChanges();
         }
     }
