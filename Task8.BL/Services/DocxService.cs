@@ -1,4 +1,5 @@
 ﻿using NPOI.XWPF.UserModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace Task8.BL.Services
     {
         public void WriteGroupReport(string savePath, GroupReport report)
         {
+            if (report is null) 
+            {
+                throw new ArgumentNullException(nameof(report));
+            }
+
             const int listFontSize = 14;
             const int titleFontSize = 16;
             XWPFDocument doc = new();

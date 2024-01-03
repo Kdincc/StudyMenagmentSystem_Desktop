@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Task8.BL.Interfaces;
@@ -22,31 +23,60 @@ namespace Task8.BL
 
         public void Add(Teacher teacher)
         {
+            if (teacher is null)
+            {
+                throw new ArgumentNullException(nameof(teacher));
+            }
+
             _context.Teachers.Add(teacher);
         }
 
         public void Add(Group group)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             _context.Groups.Add(group);
         }
 
         public void Add(Student student)
         {
+            if (student is null)
+            {
+                throw new ArgumentNullException(nameof(student));
+            }
+
             _context.Students.Add(student);
         }
 
         public void Remove(Group group)
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             _context.Groups.Remove(group);
         }
 
         public void Remove(Student student)
         {
+            if (student is null)
+            {
+                throw new ArgumentNullException(nameof(student));
+            }
+
             _context.Students.Remove(student);
         }
 
         public void Remove(Teacher teacher)
         {
+            if (teacher is null)
+            {
+                throw new ArgumentNullException(nameof(teacher));
+            }
             _context.Teachers.Remove(teacher);
         }
 

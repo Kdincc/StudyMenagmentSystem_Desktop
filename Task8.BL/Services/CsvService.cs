@@ -17,6 +17,11 @@ namespace Task8.BL
     {
         public CsvReadingResults<Student> GetStudentsFrom(string path)
         {
+            if (path is null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
             using (StreamReader streamReader = new(path)) 
             {
                 using (CsvReader csvReader = new(streamReader, CultureInfo.InvariantCulture))
@@ -31,16 +36,17 @@ namespace Task8.BL
                     {
                         return new CsvReadingResults<Student>(new List<Student>(), ex);
                     }
-                    catch(CsvHelperException ex) 
-                    {
-                        return null;
-                    }
                 }
             }
         }
 
         public void WriteStudentsTo(IEnumerable<Student> students, string path)
         {
+            if (path is null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
             using (StreamWriter streamWriter = new(path))
             {
                 using(CsvWriter csvWriter = new(streamWriter, CultureInfo.InvariantCulture))

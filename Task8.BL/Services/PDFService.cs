@@ -4,6 +4,7 @@ using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Font;
 using iText.Layout.Properties;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,11 @@ namespace Task8.BL
     {
         public void WriteGroupReport(string savePath, GroupReport report)
         {
+            if (report is null)
+            {
+                throw new ArgumentNullException(nameof(report));
+            }
+
             using (PdfWriter writer = new(savePath))
             {
                 using (PdfDocument pdf = new(writer))
