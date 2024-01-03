@@ -90,5 +90,13 @@ namespace Task8.Tests
 
             moqContext.Verify(x => x.Teachers.Remove(It.IsAny<Teacher>()), Times.Once);
         }
+
+        [TestMethod]
+        public void SaveChanges_SaveChanesInDbContext()
+        {
+            _repositoryService.SaveChanges();
+
+            moqContext.Verify(x => x.SaveChanges(), Times.Once);
+        }
     }
 }
