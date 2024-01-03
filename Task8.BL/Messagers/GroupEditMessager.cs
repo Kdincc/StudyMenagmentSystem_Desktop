@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Task8.BL.Properties;
 
-namespace Task8.BL
+namespace Task8.BL.Messagers
 {
     public static class GroupEditMessager
     {

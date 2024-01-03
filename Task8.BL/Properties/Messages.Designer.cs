@@ -70,20 +70,12 @@ namespace Task8.BL.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на \nInvalid headers in file:.
+        ///   Ищет локализованную строку, похожую на Invalid headers in file:
+        ///.
         /// </summary>
         internal static string CsvInvalidHeaderMessageBase {
             get {
                 return ResourceManager.GetString("CsvInvalidHeaderMessageBase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Csv file not in correct format !.
-        /// </summary>
-        internal static string CsvReadingErrorMessage {
-            get {
-                return ResourceManager.GetString("CsvReadingErrorMessage", resourceCulture);
             }
         }
         

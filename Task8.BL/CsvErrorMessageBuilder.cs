@@ -12,7 +12,7 @@ namespace Task8.BL
     {
         public static string HeaderValidationMessage(HeaderValidationException exception)
         {
-            StringBuilder message = new(Messages.CsvReadingErrorMessage);
+            StringBuilder message = new(Messages.CsvInvalidHeaderMessageBase);
 
             foreach (InvalidHeader header in exception.InvalidHeaders)
             {
