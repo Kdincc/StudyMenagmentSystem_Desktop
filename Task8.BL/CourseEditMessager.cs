@@ -17,9 +17,9 @@ namespace Task8.BL
             MessageBox.Show(Messages.CantRemoveGroupMessage);
         }
 
-        public static void CsvReadingErrorMessage()
+        public static void CsvReadingErrorMessage(string errorMessage)
         {
-            MessageBox.Show(Messages.CsvReadingErrorMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(errorMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public static void EmptyGroupNameMessage()
