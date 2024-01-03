@@ -25,9 +25,9 @@ namespace Task8.BL
             _context.Teachers.Add(teacher);
         }
 
-        public void Add(Group teacher)
+        public void Add(Group group)
         {
-            _context.Groups.Add(teacher);
+            _context.Groups.Add(group);
         }
 
         public void Add(Student student)
