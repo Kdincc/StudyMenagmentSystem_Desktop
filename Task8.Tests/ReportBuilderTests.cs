@@ -13,13 +13,13 @@ namespace Task8.Tests
         [TestMethod]
         public void BuildGroupReport_IsCorrectReport()
         {
-            Group testGroup = new Group()
+            Group testGroup = new()
             {
                 Name = "test",
-                Course = new Course() { Name = "test course" },
-                Students = new List<Student>() { new Student { FirstName = "testName", LastName = "lastName" } }
+                Course = new() { Name = "test course" },
+                Students = new List<Student>() { new Student { StudentId = 1, FirstName = "testName", LastName = "lastName" } }
             };
-            GroupReport expected = new(testGroup.Name, testGroup.Course.Name, testGroup.Students.ToList());
+            GroupReport expected = new(testGroup.Course.Name, testGroup.Name, testGroup.Students.ToList());
 
             GroupReport actual = ReportBuilder.BuildGroupReport(testGroup);
 

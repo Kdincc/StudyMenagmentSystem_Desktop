@@ -13,10 +13,10 @@ namespace Task8.BL
 		private readonly string _groupNameHeadr;
 		private readonly List<Student> _students;
 
-        public GroupReport(string courseNameHeader, string _groupNameHeader, List<Student> students)
+        public GroupReport(string courseNameHeader, string groupNameHeader, List<Student> students)
         {
             _courseNameHeader = courseNameHeader;
-            _groupNameHeadr = _groupNameHeader;
+            _groupNameHeadr = groupNameHeader;
             _students = students;
         }
 
@@ -28,7 +28,7 @@ namespace Task8.BL
 
         public bool Equals(GroupReport other)
         {
-            return GroupNameHeader == other.GroupNameHeader && CourseNameHeader == other.CourseNameHeader && Students.SequenceEqual(other.Students);
+            return string.Equals(GroupNameHeader, other.GroupNameHeader) && string.Equals(CourseNameHeader, other.CourseNameHeader) && Students.SequenceEqual(other.Students);
         }
 
         public override bool Equals(object obj)

@@ -10,7 +10,7 @@ namespace Task8.Data.Entity.Generated
     {
         public bool Equals(Student other)
         {
-            return StudentId == other.StudentId && FirstName == other.FirstName && LastName == other.LastName;
+            return StudentId == other.StudentId && string.Equals(FirstName, other.FirstName) && string.Equals(LastName, other.LastName);
         }
 
         public override bool Equals(object obj) 
