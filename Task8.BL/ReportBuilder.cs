@@ -11,6 +11,11 @@ namespace Task8.BL
     {
         public static GroupReport BuildGroupReport(Group group) 
         {
+            if (group is null)
+            {
+                throw new ArgumentNullException(nameof(group));
+            }
+
             return new GroupReport(group.Course.Name, group.Name, group.Students.ToList());
         }
     }
