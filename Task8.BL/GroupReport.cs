@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using Task8.Data.Entity.Generated;
@@ -33,12 +34,17 @@ namespace Task8.BL
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as GroupReport);
+            if (obj is GroupReport) 
+            {
+                return Equals(obj as GroupReport);
+            }
+            
+            return base.Equals(obj);
         }
 
         public override int GetHashCode() 
         {
-            return HashCode.Combine(GroupNameHeader, CourseNameHeader);
+            return HashCode.Combine(_courseNameHeader, _groupNameHeadr);
         }
     }
 }

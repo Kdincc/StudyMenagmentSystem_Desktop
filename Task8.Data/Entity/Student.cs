@@ -15,7 +15,12 @@ namespace Task8.Data.Entity.Generated
 
         public override bool Equals(object obj) 
         {
-            return Equals(obj as Student);
+            if (obj is Student) 
+            {
+                return Equals(obj as Student);
+            }
+
+            return base.Equals(obj);
         }
 
         public override int GetHashCode() 

@@ -25,5 +25,13 @@ namespace Task8.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void BuildGroupReport_Throws_ArgumentNullException()
+        {
+            Group group = null;
+
+            Assert.ThrowsException<ArgumentNullException>(() => ReportBuilder.BuildGroupReport(group));
+        }
     }
 }
