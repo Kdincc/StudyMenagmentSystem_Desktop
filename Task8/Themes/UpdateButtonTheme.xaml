@@ -8,7 +8,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid>
+                    <Grid x:Name="grid">
                         <Ellipse x:Name="ellipse" Fill="{StaticResource UpdateButtonImage}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
@@ -22,7 +22,6 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="ellipse" Property="StrokeThickness" Value="1"/>
                             <Setter TargetName="ellipse" Property="Stroke" Value="#9693AD"/>
-                            <Setter Property="Margin" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
