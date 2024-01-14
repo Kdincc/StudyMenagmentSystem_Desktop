@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task8.BL.Interfaces
 {
-    internal interface IUpdatable
+    public interface IUpdatable
     {
+        public void Update();
     }
 }

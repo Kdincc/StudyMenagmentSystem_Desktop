@@ -9,7 +9,7 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
 {
-    public interface ICourseEditModel
+    public interface ICourseEditModel : IUpdatable
     {
         public IEnumerable<Group> Groups { get; }
 

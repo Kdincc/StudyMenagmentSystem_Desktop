@@ -7,7 +7,7 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
 {
-    public interface ITeachersModel
+    public interface ITeachersModel : IUpdatable
     {
         public IEnumerable<Teacher> Teachers{ get; }
 

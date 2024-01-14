@@ -7,7 +7,7 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
 {
-    public interface IGroupEditModel
+    public interface IGroupEditModel : IUpdatable
     {
         public IEnumerable<Student> Students { get; }
 
