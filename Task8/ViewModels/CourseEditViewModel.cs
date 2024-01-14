@@ -3,6 +3,7 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
@@ -28,6 +29,7 @@ namespace Task8.ViewModels
             BuildPdfReport = new(BuildPdfReportCommand);
             ImportStudents = new(ImportStudentsCommand);
             ExportStudents = new(ExportStudentsCommand);
+
             _eventAggregator.GetEvent<EditNavigateEvent>().Subscribe(OnNavigate);
         }
 

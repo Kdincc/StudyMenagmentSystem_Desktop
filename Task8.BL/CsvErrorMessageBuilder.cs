@@ -18,7 +18,7 @@ namespace Task8.BL
             {
                 foreach (string headerName in header.Names)
                 {
-                    message.Append($"Header: {headerName}, Index: {header.Index}\n");
+                    message.Append($"Header: {headerName} Index: {header.Index}\n");
                 }
             }
 

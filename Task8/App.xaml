@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="Themes\CustomListBoxItem.xaml"/>
                 <ResourceDictionary Source="Themes\CustomTextBlock.xaml"/>
                 <ResourceDictionary Source="Themes\СomboBoxStyle.xaml"/>
+                <ResourceDictionary Source="Themes\UpdateButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

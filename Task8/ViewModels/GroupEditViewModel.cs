@@ -39,9 +39,8 @@ namespace Task8.ViewModels
             set { _newStudentLastName = value; }
         }
 
-
         #endregion
-
+        
         #region Commands
 
         public DelegateCommand<Student> Save { get; }
