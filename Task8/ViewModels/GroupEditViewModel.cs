@@ -17,9 +17,7 @@ namespace Task8.ViewModels
         public GroupEditViewModel(IGroupEditModel model, IEventAggregator eventAggregator)
         {
             _model = model;
-            Save = new(SaveCommand);
-            Remove = new(RemoveCommand);
-            Add = new(AddCommand);
+
             eventAggregator.GetEvent<EditNavigateEvent>().Subscribe(OnNavigate);
         }
 
@@ -40,14 +38,21 @@ namespace Task8.ViewModels
         }
 
         #endregion
-        
+
         #region Commands
 
-        public DelegateCommand<Student> Save { get; }
+        public DelegateCommand Update => new(UpdateCommand);
 
-        public DelegateCommand<Student> Remove { get; }
+        public DelegateCommand<Student> Save => new(SaveCommand);
 
-        public DelegateCommand Add { get; }
+        public DelegateCommand<Student> Remove => new(RemoveCommand);
+
+        public DelegateCommand Add => new(AddCommand);
+
+        public void UpdateCommand()
+        {
+            RaisePropertyChanged(nameof(Students));
+        }
 
         private void SaveCommand(Student student)
         {
@@ -82,6 +87,5 @@ namespace Task8.ViewModels
                 RaisePropertyChanged(nameof(Students));
             }
         }
-
     }
 }

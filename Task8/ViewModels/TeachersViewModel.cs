@@ -20,9 +20,6 @@ namespace Task8.ViewModels
         public TeachersViewModel(ITeachersModel teachersModel)
         {
             _teachersModel = teachersModel;
-            Save = new(SaveCommand);
-            Add = new(AddCommand);
-            Remove = new(RemoveCommand);
         }
 
         #region Props
@@ -46,11 +43,18 @@ namespace Task8.ViewModels
 
         #region Commands
 
-        public DelegateCommand<Teacher> Save { get; }
+        public DelegateCommand Update => new(UpdateCommand);
 
-        public DelegateCommand<Teacher> Remove { get; }
+        public DelegateCommand<Teacher> Save => new(SaveCommand);
 
-        public DelegateCommand Add { get; }
+        public DelegateCommand<Teacher> Remove => new(RemoveCommand);
+
+        public DelegateCommand Add => new(AddCommand);
+
+        private void UpdateCommand()
+        {
+            RaisePropertyChanged(nameof(Teachers));
+        }
 
         private void SaveCommand(Teacher teacher)
         {
@@ -76,6 +80,5 @@ namespace Task8.ViewModels
         }
 
         #endregion
-
     }
 }

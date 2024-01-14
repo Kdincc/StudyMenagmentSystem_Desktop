@@ -174,7 +174,8 @@
                                 Width="35"
                                 Height="35"
                                 Style="{StaticResource UpdateButtonStyle}"
-                                BorderThickness="0">
+                                BorderThickness="0"
+                                Command="{Binding Update}">
                         </Button>
                     </Grid>
 

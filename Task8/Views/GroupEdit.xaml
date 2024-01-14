@@ -135,6 +135,16 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
+                    <Button HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Margin="18,5,5,10"
+                                Width="35"
+                                Height="35"
+                                Style="{StaticResource UpdateButtonStyle}"
+                                BorderThickness="0"
+                                Command="{Binding Update}">
+                    </Button>
+
                     <TextBlock Text="Students"
                                Grid.Row="0"
                                Foreground="White"

@@ -22,13 +22,6 @@ namespace Task8.ViewModels
         {
             _courseEditModel = courseEditModel;
             _eventAggregator = eventAggregator;
-            Save = new(SaveCommand);
-            Remove = new(RemoveCommand);
-            Add = new(AddCommand);
-            BuildDocxReport = new(BuildDocxReportCommand);
-            BuildPdfReport = new(BuildPdfReportCommand);
-            ImportStudents = new(ImportStudentsCommand);
-            ExportStudents = new(ExportStudentsCommand);
 
             _eventAggregator.GetEvent<EditNavigateEvent>().Subscribe(OnNavigate);
         }
@@ -66,19 +59,21 @@ namespace Task8.ViewModels
 
         #region Commands
 
-        public DelegateCommand<Group> BuildPdfReport { get; }
+        public DelegateCommand Update => new(UpdateCommand);
 
-        public DelegateCommand<Group> BuildDocxReport { get; }
+        public DelegateCommand<Group> BuildPdfReport => new(BuildPdfReportCommand);
 
-        public DelegateCommand<Group> ExportStudents { get; }
+        public DelegateCommand<Group> BuildDocxReport => new(BuildDocxReportCommand);
 
-        public DelegateCommand<Group> ImportStudents { get; }
+        public DelegateCommand<Group> ExportStudents => new(ExportStudentsCommand);
 
-        public DelegateCommand<Group> Save { get; }
+        public DelegateCommand<Group> ImportStudents => new(ImportStudentsCommand);
 
-        public DelegateCommand<Group> Remove { get; }
+        public DelegateCommand<Group> Save => new(SaveCommand);
 
-        public DelegateCommand Add { get; }
+        public DelegateCommand<Group> Remove => new(RemoveCommand);
+
+        public DelegateCommand Add => new(AddCommand);
 
         private void ExportStudentsCommand(Group group)
         {
@@ -152,6 +147,11 @@ namespace Task8.ViewModels
 
             RaisePropertyChanged(nameof(Groups));
             RaisePropertyChanged(nameof(NewGroupName));
+        }
+
+        private void UpdateCommand() 
+        {
+            RaisePropertyChanged(nameof(Groups));
         }
 
         #endregion
