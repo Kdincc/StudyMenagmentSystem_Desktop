@@ -86,7 +86,18 @@ namespace Task8.ViewModels
 
         private void SaveCommand(Teacher teacher)
         {
-            _teachersModel.SaveChangesFor(teacher);
+            if (_isTeacherNameChanged)
+            {
+                _teachersModel.ChangeTeacherName(teacher, _changedTeacherName);
+            }
+
+            if (_isTeacherSurnameChanged)
+            {
+                _teachersModel.ChangeTeacherSurname(teacher, _changedTeacherSurname);
+            }
+
+            _teachersModel.SaveChanges();
+            RaisePropertyChanged(nameof(Teachers));
         }
 
         private void RemoveCommand(Teacher teacher)

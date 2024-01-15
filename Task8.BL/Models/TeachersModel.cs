@@ -58,16 +58,6 @@ namespace Task8.BL.Models
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChangesFor(Teacher teacher)
-        {
-            if (teacher is null)
-            {
-                throw new ArgumentNullException(nameof(teacher));
-            }
-
             _repositoryService.SaveChanges();
         }
     }

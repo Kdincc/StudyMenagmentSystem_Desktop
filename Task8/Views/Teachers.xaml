@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Task8.Views"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#9693AD">
@@ -158,6 +159,7 @@
                               Grid.Row="1"
                               Foreground="White"
                               Name="GroupList"
+                              SelectionMode="Single"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                               ItemContainerStyle="{StaticResource CustomListBoxItemStyle}"
@@ -189,15 +191,24 @@
                                                 <Border CornerRadius="10"
                                                Margin="5"
                                                Background="#545261">
-                                                    <TextBox Text="{Binding Name}"
-                                                    Margin="4"
-                                                    Width="160"
-                                                    BorderThickness="0"
-                                                    TextAlignment="Center"
-                                                    Foreground="White"
-                                                    FontSize="14"
-                                                    Background="Transparent">
+                                                    <TextBox Text="{Binding Name, Mode=OneWay}"
+                                                             Name="NameBox"
+                                                             Margin="4"
+                                                             Width="160"
+                                                             BorderThickness="0"
+                                                             TextAlignment="Center"
+                                                             Foreground="White"
+                                                             FontSize="14"
+                                                             Background="Transparent">
 
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="TextChanged">
+                                                                <i:InvokeCommandAction Command="{Binding DataContext.TeacherNameChanged, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                                                       CommandParameter="{Binding ElementName=NameBox, Path=Text}">
+                                                                    
+                                                                </i:InvokeCommandAction>
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
                                                     </TextBox>
                                                 </Border>
                                             </DataTemplate>
@@ -210,7 +221,8 @@
                                                 <Border CornerRadius="10"
                                                Margin="5"
                                                Background="#545261">
-                                                    <TextBox Text="{Binding Surname}"
+                                                    <TextBox Text="{Binding Surname, Mode=OneWay}"
+                                                             Name="SurnameBox"
                                                     Margin="4"
                                                     Width="160"
                                                     BorderThickness="0"
@@ -218,6 +230,15 @@
                                                     Foreground="White"
                                                     FontSize="14"
                                                     Background="Transparent">
+
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="TextChanged">
+                                                                <i:InvokeCommandAction Command="{Binding DataContext.TeacherSurnameChanged, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                                                       CommandParameter="{Binding ElementName=SurnameBox, Path=Text}">
+
+                                                                </i:InvokeCommandAction>
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
 
                                                     </TextBox>
                                                 </Border>
@@ -261,6 +282,14 @@
                             </GridView>
 
                         </ListView.View>
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChanged}">
+                                    
+                                </i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
