@@ -17,6 +17,10 @@ namespace Task8.BL.Interfaces
 
         public void RemoveStudent(Student group);
 
-        public void SaveChangesFor(Student student);
+        public void ChangeStudentName(Student studentToChange,  string newName);
+
+        public void ChangeStudentLastName(Student studentToChange, string newLastName);
+
+        public void SaveChanges();
     }
 }
