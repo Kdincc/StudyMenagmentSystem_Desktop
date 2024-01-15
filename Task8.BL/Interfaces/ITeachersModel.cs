@@ -11,7 +11,11 @@ namespace Task8.BL.Interfaces
     {
         public IEnumerable<Teacher> Teachers { get; }
 
-        public void SaveChangesFor(Teacher teacher);
+        public void SaveChanges();
+
+        public void ChangeTeacherName(Teacher teacherToChange, string newName);
+
+        public void ChangeTeacherSurname(Teacher teacherToChange, string newSurname);
 
         public void CreateTeacher(string name, string surname);
 

@@ -13,9 +13,13 @@ namespace Task8.ViewModels
 {
     public class TeachersViewModel : BindableBase
     {
+        private readonly ITeachersModel _teachersModel;
         private string _newTeacherName;
         private string _newTeacherSurname;
-        private readonly ITeachersModel _teachersModel;
+        private string _changedTeacherName;
+        private string _changedTeacherSurname;
+        private bool _isTeacherNameChanged = false;
+        private bool _isTeacherSurnameChanged = false;
 
         public TeachersViewModel(ITeachersModel teachersModel)
         {
@@ -43,6 +47,12 @@ namespace Task8.ViewModels
 
         #region Commands
 
+        public DelegateCommand SelectionChanged => new(SelectionChangedCommand);
+
+        public DelegateCommand<string> TeacherNameChanged => new(TeacherNameChangedCommand);
+
+        public DelegateCommand<string> TeacherSurnameChanged => new(TeacherSurnameChangedCommand);
+
         public DelegateCommand Update => new(UpdateCommand);
 
         public DelegateCommand<Teacher> Save => new(SaveCommand);
@@ -50,6 +60,24 @@ namespace Task8.ViewModels
         public DelegateCommand<Teacher> Remove => new(RemoveCommand);
 
         public DelegateCommand Add => new(AddCommand);
+
+        private void SelectionChangedCommand()
+        {
+            _isTeacherNameChanged = false;
+            _isTeacherSurnameChanged = false;
+        }
+
+        private void TeacherSurnameChangedCommand(string newSurname)
+        {
+            _changedTeacherSurname = newSurname;
+            _isTeacherSurnameChanged = true;
+        }
+
+        private void TeacherNameChangedCommand(string newName)
+        {
+            _changedTeacherName = newName;
+            _isTeacherNameChanged = true;
+        }
 
         private void UpdateCommand()
         {
