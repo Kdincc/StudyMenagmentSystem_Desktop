@@ -20,6 +20,16 @@ namespace Task8.BL.Models
 
         public IEnumerable<Teacher> Teachers => _repositoryService.Teachers;
 
+        public void ChangeTeacherName(Teacher teacherToChange, string newName)
+        {
+            Teachers.First(t => t.TeacherId == teacherToChange.TeacherId).Name = newName;
+        }
+
+        public void ChangeTeacherSurname(Teacher teacherToChange, string newSurname)
+        {
+            Teachers.First(t => t.TeacherId == teacherToChange.TeacherId).Surname = newSurname;
+        }
+
         public void CreateTeacher(string name, string surname)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname))
@@ -44,6 +54,11 @@ namespace Task8.BL.Models
             _repositoryService.Remove(teacher);
 
             _repositoryService.SaveChanges();
+        }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
         }
 
         public void SaveChangesFor(Teacher teacher)
