@@ -29,6 +29,10 @@ namespace Task8.BL.Interfaces
 
         public void ExportStudents(Group group, string exportPath);
 
-        public void SaveChangesFor(Group group);
+        public void ChangeGroupName(Group groupToChange, string newName);
+
+        public void ChangeGroupTeacher(Group groupToChange, Teacher newTeacher);
+
+        public void SaveChanges();
     }
 }

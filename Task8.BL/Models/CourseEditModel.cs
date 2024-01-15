@@ -93,13 +93,8 @@ namespace Task8.BL.Models
             CourseEditMessager.ReportCompleteMessage();
         }
 
-        public void SaveChangesFor(Group group)
+        public void SaveChanges()
         {
-            if (group is null)
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
-
             _repository.SaveChanges();
         }
 
@@ -143,7 +138,22 @@ namespace Task8.BL.Models
                 throw new ArgumentNullException(nameof(group));
             }
 
+            if (string.IsNullOrEmpty(exportPath))
+            {
+                throw new ArgumentNullException(nameof(exportPath));
+            }
+
             _csvService.WriteStudentsTo(group.Students, exportPath);
+        }
+
+        public void ChangeGroupName(Group groupToChange, string newName)
+        {
+            Groups.First(g => g.GroupId == groupToChange.GroupId).Name = newName;
+        }
+
+        public void ChangeGroupTeacher(Group groupToChange, Teacher newTeacher)
+        {
+            Groups.First(g => g.GroupId == groupToChange.GroupId).Teacher = newTeacher;
         }
     }
 }

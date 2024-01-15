@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Identity.Client;
+using Microsoft.Win32;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -14,8 +15,13 @@ namespace Task8.ViewModels
     {
         private readonly ICourseEditModel _courseEditModel;
         private readonly IEventAggregator _eventAggregator;
-        private Group _selectedGroup;
         private string _newGroupName;
+        private string _changedGroupName;
+        private Teacher _newTeacher;
+        private Group _selectedGroup;
+        private bool _isGroupNameChanged = false;
+        private bool _isTeacherChanged = false;
+
         private bool _isToolBarButtonsActive = false;
 
         public CourseEditViewModel(ICourseEditModel courseEditModel, IEventAggregator eventAggregator)
@@ -59,6 +65,12 @@ namespace Task8.ViewModels
 
         #region Commands
 
+        public DelegateCommand<Teacher> TeacherChanged => new(TeacherChangedCommand);
+
+        public DelegateCommand<string> GroupNameChanged => new(GroupNameChangedCommand);
+
+        public DelegateCommand SelectionChanged => new(SelectionChangedCommand);
+
         public DelegateCommand Update => new(UpdateCommand);
 
         public DelegateCommand<Group> BuildPdfReport => new(BuildPdfReportCommand);
@@ -74,6 +86,24 @@ namespace Task8.ViewModels
         public DelegateCommand<Group> Remove => new(RemoveCommand);
 
         public DelegateCommand Add => new(AddCommand);
+
+        private void TeacherChangedCommand(Teacher teacher)
+        {
+            _isTeacherChanged = true;
+            _newTeacher = teacher;
+        }
+
+        private void GroupNameChangedCommand(string name)
+        {
+            _isGroupNameChanged = true;
+            _changedGroupName = name;
+        }
+
+        private void SelectionChangedCommand()
+        {
+            _isGroupNameChanged = false;
+            _isTeacherChanged = false;
+        }
 
         private void ExportStudentsCommand(Group group)
         {
@@ -135,7 +165,17 @@ namespace Task8.ViewModels
 
         private void SaveCommand(Group group)
         {
-            _courseEditModel.SaveChangesFor(group);
+            if (_isGroupNameChanged)
+            {
+                _courseEditModel.ChangeGroupName(group, _changedGroupName);
+            }
+
+            if (_isTeacherChanged)
+            {
+                _courseEditModel.ChangeGroupTeacher(group, _newTeacher);
+            }
+
+            _courseEditModel.SaveChanges();
             RaisePropertyChanged(nameof(Groups));
         }
 
