@@ -56,13 +56,18 @@ namespace Task8.BL.Models
             _repositoryService.SaveChanges();
         }
 
-        public void SaveChangesFor(Student student)
+        public void ChangeStudentName(Student studentToChange, string newName)
         {
-            if (student is null) 
-            {
-                throw new ArgumentNullException(nameof(student));
-            }
+            Students.First(s => s.StudentId == studentToChange.StudentId).FirstName = newName;
+        }
 
+        public void ChangeStudentLastName(Student studentToChange, string newLastName)
+        {
+            Students.First(s => s.StudentId == studentToChange.StudentId).LastName = newLastName;
+        }
+
+        public void SaveChanges()
+        {
             _repositoryService.SaveChanges();
         }
     }
