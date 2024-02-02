@@ -17,7 +17,6 @@ namespace Task8.BL
 
             if (!_context.Database.CanConnect())
             {
-                _context.Database.EnsureCreated();
                 _context.Database.Migrate();
             }
         }
