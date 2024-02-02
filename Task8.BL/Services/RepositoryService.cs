@@ -14,6 +14,12 @@ namespace Task8.BL
         public RepositoryService(Task6Context context)
         {
             _context = context;
+
+            if (!_context.Database.CanConnect())
+            {
+                _context.Database.EnsureCreated();
+                _context.Database.Migrate();
+            }
         }
 
         public IEnumerable<Course> Courses => _context.Courses.Include(c => c.Groups).ThenInclude(t => t.Teacher).Include(g => g.Groups).ThenInclude(s => s.Students);

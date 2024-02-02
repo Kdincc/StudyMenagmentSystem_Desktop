@@ -22,11 +22,6 @@ namespace Task8
             return Container.Resolve<MainWindow>();
         }
 
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-        }
-
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<Task6Context>();
