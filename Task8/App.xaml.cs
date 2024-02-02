@@ -1,6 +1,6 @@
-﻿using Prism.Ioc;
+﻿using NPOI.XWPF.UserModel;
+using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Mvvm;
 using System.Windows;
 using Task8.BL;
 using Task8.BL.Interfaces;
@@ -22,6 +22,11 @@ namespace Task8
             return Container.Resolve<MainWindow>();
         }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+        }
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<Task6Context>();
@@ -32,6 +37,8 @@ namespace Task8
             containerRegistry.Register<IDocxService, DocxService>();
             containerRegistry.Register<IPdfService, PdfService>();
             containerRegistry.Register<ICsvService, CsvService>();
+            containerRegistry.Register<IDocumentHelper<iText.Layout.Document>, PdfHelper>();
+            containerRegistry.Register<IDocumentHelper<XWPFDocument>, DocxHelper>();
             containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
             containerRegistry.RegisterDialog<InfoDialog, InfoDialogViewModel>();
         }

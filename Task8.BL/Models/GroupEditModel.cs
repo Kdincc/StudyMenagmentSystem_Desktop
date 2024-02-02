@@ -1,11 +1,7 @@
-﻿using iText.Forms.Fields.Merging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
-using Task8.BL.Messagers;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
@@ -21,36 +17,33 @@ namespace Task8.BL.Models
         }
 
         public IEnumerable<Student> Students => _currentGroup.Students;
-         
-        public void CreateStudent(string name, string lastName)
-        {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(lastName)) 
-            {
-                GroupEditMessager.EmptyStudentNameMessage();
 
-                return;
+        public Group Group
+        {
+            set
+            {
+                ArgumentNullException.ThrowIfNull(nameof(value));
+
+                _currentGroup = value;
+            }
+        }
+
+        public bool CreateStudent(string name, string lastName)
+        {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(lastName))
+            {
+                return false;
             }
 
             _repositoryService.Add(new Student { FirstName = name, LastName = lastName, Group = _currentGroup });
             _repositoryService.SaveChanges();
-        }
 
-        public void InitGroup(Group group)
-        {
-            if (group is null) 
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
-
-            _currentGroup = group;
+            return true;
         }
 
         public void RemoveStudent(Student student)
         {
-            if (student is null) 
-            {
-                throw new ArgumentNullException(nameof(student));
-            }
+            ArgumentNullException.ThrowIfNull(student, nameof(student));
 
             _repositoryService.Remove(student);
             _repositoryService.SaveChanges();
@@ -58,11 +51,15 @@ namespace Task8.BL.Models
 
         public void ChangeStudentName(Student studentToChange, string newName)
         {
+            ArgumentNullException.ThrowIfNull(studentToChange, nameof(studentToChange));
+
             Students.First(s => s.StudentId == studentToChange.StudentId).FirstName = newName;
         }
 
         public void ChangeStudentLastName(Student studentToChange, string newLastName)
         {
+            ArgumentNullException.ThrowIfNull(studentToChange, nameof(studentToChange));
+
             Students.First(s => s.StudentId == studentToChange.StudentId).LastName = newLastName;
         }
 

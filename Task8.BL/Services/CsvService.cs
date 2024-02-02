@@ -1,13 +1,9 @@
 ﻿using CsvHelper;
-using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 
@@ -17,12 +13,9 @@ namespace Task8.BL
     {
         public CsvReadingResults<Student> GetStudentsFrom(string path)
         {
-            if (path is null)
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
+            ArgumentNullException.ThrowIfNull(path, nameof(path));
 
-            using (StreamReader streamReader = new(path)) 
+            using (StreamReader streamReader = new(path))
             {
                 using (CsvReader csvReader = new(streamReader, CultureInfo.InvariantCulture))
                 {
@@ -42,14 +35,12 @@ namespace Task8.BL
 
         public void WriteStudentsTo(IEnumerable<Student> students, string path)
         {
-            if (path is null)
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
+            ArgumentNullException.ThrowIfNull(students, nameof(students));
+            ArgumentNullException.ThrowIfNull(path, nameof(path));
 
             using (StreamWriter streamWriter = new(path))
             {
-                using(CsvWriter csvWriter = new(streamWriter, CultureInfo.InvariantCulture))
+                using (CsvWriter csvWriter = new(streamWriter, CultureInfo.InvariantCulture))
                 {
                     csvWriter.WriteRecords(students);
                 }

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Security.RightsManagement;
 using Task8.BL.Interfaces;
-using Task8.BL.Messagers;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
@@ -29,13 +26,20 @@ namespace Task8.BL.Models
 
         public IEnumerable<Teacher> Teachers => _repository.Teachers;
 
-        public void CreateGroup(string groupName)
+        public Course CurrentCourse
         {
-            if (string.IsNullOrEmpty(groupName)) 
+            set
             {
-                CourseEditMessager.EmptyGroupNameMessage();
+                ArgumentNullException.ThrowIfNull(value, nameof(value));
+                _currentCourse = value;
+            }
+        }
 
-                return;
+        public bool CreateGroup(string groupName)
+        {
+            if (string.IsNullOrEmpty(groupName))
+            {
+                return false;
             }
 
             Group group = new()
@@ -47,50 +51,31 @@ namespace Task8.BL.Models
 
             _repository.Add(group);
             _repository.SaveChanges();
+
+            return true;
         }
 
-        public void InitCourse(Course course)
+        public bool RemoveGroup(Group group)
         {
-            if (course is null)
-            {
-                throw new ArgumentNullException(nameof(course));
-            }
-
-            _currentCourse = course;
-        }
-
-        public void RemoveGroup(Group group)
-        {
-            if (group is null)
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
+            ArgumentNullException.ThrowIfNull(group, nameof(group));
 
             if (group.Students.Count > 0)
             {
-                CourseEditMessager.CantRemoveGroupMessage();
-                return;
+                return false;
             }
 
             _repository.Remove(group);
             _repository.SaveChanges();
+
+            return true;
         }
 
         public void BuildDocxReport(string savePath, Group group)
         {
-            if (group is null)
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
-
-            if (string.IsNullOrEmpty(savePath))
-            {
-                throw new ArgumentNullException(nameof(savePath));
-            }    
+            ArgumentNullException.ThrowIfNull(group, nameof(group));
+            ArgumentNullException.ThrowIfNull(savePath, nameof(savePath));
 
             _docxBuilder.WriteGroupReport(savePath, ReportBuilder.BuildGroupReport(group));
-
-            CourseEditMessager.ReportCompleteMessage();
         }
 
         public void SaveChanges()
@@ -100,59 +85,51 @@ namespace Task8.BL.Models
 
         public void BuildPDFReport(string savePath, Group group)
         {
-            if (group is null)
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
+            ArgumentNullException.ThrowIfNull(savePath, nameof(savePath));
+            ArgumentNullException.ThrowIfNull(group, nameof(group));
 
             _pdfBuilder.WriteGroupReport(savePath, ReportBuilder.BuildGroupReport(group));
-
-            CourseEditMessager.ReportCompleteMessage();
         }
 
-        public void ImportStudents(Group group, string csvFilePath)
+        public CsvReadingResults<Student> ImportStudents(Group group, string csvFilePath)
         {
-            if (group is null)
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
+            ArgumentNullException.ThrowIfNull(group, nameof(group));
+            ArgumentNullException.ThrowIfNull(csvFilePath, nameof(csvFilePath));
 
             var results = _csvService.GetStudentsFrom(csvFilePath);
 
             if (results.IsInvalid)
             {
-                CourseEditMessager.CsvReadingErrorMessage(results.Error.Message);
-
-                return;
+                return results;
             }
 
             group.Students = results.Records.ToList();
 
             _repository.SaveChanges();
+
+            return results;
         }
 
         public void ExportStudents(Group group, string exportPath)
         {
-            if (group is null)
-            {
-                throw new ArgumentNullException(nameof(group));
-            }
-
-            if (string.IsNullOrEmpty(exportPath))
-            {
-                throw new ArgumentNullException(nameof(exportPath));
-            }
+            ArgumentNullException.ThrowIfNull(group, nameof(group));
+            ArgumentNullException.ThrowIfNull(group, nameof(exportPath));
 
             _csvService.WriteStudentsTo(group.Students, exportPath);
         }
 
         public void ChangeGroupName(Group groupToChange, string newName)
         {
+            ArgumentNullException.ThrowIfNull(groupToChange, nameof(groupToChange));
+
             Groups.First(g => g.GroupId == groupToChange.GroupId).Name = newName;
         }
 
         public void ChangeGroupTeacher(Group groupToChange, Teacher newTeacher)
         {
+            ArgumentNullException.ThrowIfNull(groupToChange, nameof(groupToChange));
+            ArgumentNullException.ThrowIfNull(newTeacher, nameof(newTeacher));
+
             Groups.First(g => g.GroupId == groupToChange.GroupId).Teacher = newTeacher;
         }
     }

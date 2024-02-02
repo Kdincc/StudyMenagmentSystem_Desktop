@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Moq;
+using NPOI.XWPF.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,7 @@ namespace Task8.Tests
     [TestClass]
     public class DocxServiceTests
     {
-        private readonly IDocxService docxService = new DocxService();
+        private readonly IDocxService docxService = new DocxService(new Mock<IDocumentHelper<XWPFDocument>>().Object);
         private readonly GroupReport _testGroupReport;
 
         public DocxServiceTests()

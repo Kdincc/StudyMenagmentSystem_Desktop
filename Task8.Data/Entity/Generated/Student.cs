@@ -1,6 +1,4 @@
 ﻿using CsvHelper.Configuration.Attributes;
-using System;
-using System.Collections.Generic;
 
 namespace Task8.Data.Entity.Generated;
 

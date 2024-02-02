@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
 {
     public interface ICourseEditModel
     {
+        public Course CurrentCourse { set; }
+
         public IEnumerable<Group> Groups { get; }
 
         public IEnumerable<Teacher> Teachers { get; }
 
-        public void CreateGroup(string groupName);
+        public bool CreateGroup(string groupName);
 
-        public void RemoveGroup(Group group);
-
-        public void InitCourse(Course course);
+        public bool RemoveGroup(Group group);
 
         public void BuildDocxReport(string savePath, Group group);
 
         public void BuildPDFReport(string savePath, Group group);
 
-        public void ImportStudents(Group group, string csvFilePath);
+        public CsvReadingResults<Student> ImportStudents(Group group, string csvFilePath);
 
         public void ExportStudents(Group group, string exportPath);
 

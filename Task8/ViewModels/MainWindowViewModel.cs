@@ -4,11 +4,9 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
-using System.Resources;
 using System.Windows;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
-using Task8.Properties;
 using Task8.Views;
 
 namespace Task8.ViewModels

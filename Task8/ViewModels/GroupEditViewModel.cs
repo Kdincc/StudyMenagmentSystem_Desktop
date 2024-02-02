@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
+using Task8.Messagers;
 
 namespace Task8.ViewModels
 {
@@ -84,12 +85,12 @@ namespace Task8.ViewModels
 
         private void SaveCommand(Student student)
         {
-            if(_isStudentNameChanged)
+            if (_isStudentNameChanged)
             {
                 _model.ChangeStudentName(student, _changedStudentName);
             }
 
-            if(_isStudentLastNameChanged) 
+            if (_isStudentLastNameChanged)
             {
                 _model.ChangeStudentLastName(student, _changedStudentLastName);
             }
@@ -107,7 +108,10 @@ namespace Task8.ViewModels
 
         private void AddCommand()
         {
-            _model.CreateStudent(NewStudentName, NewStudentLastName);
+            if (!_model.CreateStudent(NewStudentName, NewStudentLastName))
+            {
+                GroupEditMessager.EmptyStudentNameMessage();
+            }
 
             NewStudentName = "";
             NewStudentLastName = "";
@@ -123,7 +127,7 @@ namespace Task8.ViewModels
         {
             if (group is Group)
             {
-                _model.InitGroup(group as Group);
+                _model.Group = group as Group;
                 RaisePropertyChanged(nameof(Students));
             }
         }

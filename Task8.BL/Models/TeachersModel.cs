@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
-using Task8.BL.Messagers;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
@@ -22,34 +19,35 @@ namespace Task8.BL.Models
 
         public void ChangeTeacherName(Teacher teacherToChange, string newName)
         {
+            ArgumentNullException.ThrowIfNull(teacherToChange, nameof(teacherToChange));
+
             Teachers.First(t => t.TeacherId == teacherToChange.TeacherId).Name = newName;
         }
 
         public void ChangeTeacherSurname(Teacher teacherToChange, string newSurname)
         {
+            ArgumentNullException.ThrowIfNull(teacherToChange, nameof(teacherToChange));
+
             Teachers.First(t => t.TeacherId == teacherToChange.TeacherId).Surname = newSurname;
         }
 
-        public void CreateTeacher(string name, string surname)
+        public bool CreateTeacher(string name, string surname)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname))
             {
-                TeachersMessager.EmptyTeacherNameMessage();
-
-                return;
+                return false;
             }
 
             _repositoryService.Add(new Teacher { Name = name, Surname = surname });
 
             _repositoryService.SaveChanges();
+
+            return true;
         }
 
         public void RemoveTeacher(Teacher teacher)
         {
-            if (teacher is null) 
-            {
-                throw new ArgumentNullException(nameof(teacher));
-            }
+            ArgumentNullException.ThrowIfNull(teacher, nameof(teacher));
 
             _repositoryService.Remove(teacher);
 

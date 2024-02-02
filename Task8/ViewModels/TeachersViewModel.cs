@@ -1,13 +1,9 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
+using Task8.Messagers;
 
 namespace Task8.ViewModels
 {
@@ -108,7 +104,10 @@ namespace Task8.ViewModels
 
         private void AddCommand()
         {
-            _teachersModel.CreateTeacher(NewTeacherName, NewTeacherSurname);
+            if (!_teachersModel.CreateTeacher(NewTeacherName, NewTeacherSurname))
+            {
+                TeachersMessager.EmptyTeacherNameMessage();
+            }
 
             NewTeacherName = "";
             NewTeacherSurname = "";

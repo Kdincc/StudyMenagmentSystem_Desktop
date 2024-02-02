@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Interfaces
@@ -17,7 +13,7 @@ namespace Task8.BL.Interfaces
 
         public void ChangeTeacherSurname(Teacher teacherToChange, string newSurname);
 
-        public void CreateTeacher(string name, string surname);
+        public bool CreateTeacher(string name, string surname);
 
         public void RemoveTeacher(Teacher teacher);
     }

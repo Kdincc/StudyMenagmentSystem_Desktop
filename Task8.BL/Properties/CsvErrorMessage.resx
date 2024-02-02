@@ -117,23 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CantRemoveGroupMessage" xml:space="preserve">
-    <value>A group can not be deleted if there is at least one student in this group.</value>
-  </data>
-  <data name="CsvInvalidHeaderMessageBase" xml:space="preserve">
-    <value>Invalid headers in file:
+  <data name="InvalidHeadersMessageBase" xml:space="preserve">
+    <value>"Invalid headers in file:
 </value>
-  </data>
-  <data name="EmptyGroupNameMessage" xml:space="preserve">
-    <value>Group must have name !</value>
-  </data>
-  <data name="EmptyStudentNameMessage" xml:space="preserve">
-    <value>Name and surname of the student can`t be empty !</value>
-  </data>
-  <data name="EmptyTeacherNameMessage" xml:space="preserve">
-    <value>Name and surname of the teacher can`t be empty !</value>
-  </data>
-  <data name="ReportCompleteMessage" xml:space="preserve">
-    <value>Report is complete !</value>
   </data>
 </root>

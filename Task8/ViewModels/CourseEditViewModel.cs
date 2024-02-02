@@ -1,13 +1,12 @@
-﻿using Microsoft.Identity.Client;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
+using Task8.Messagers;
 
 namespace Task8.ViewModels
 {
@@ -118,16 +117,21 @@ namespace Task8.ViewModels
             }
         }
 
-        private void ImportStudentsCommand(Group group) 
+        private void ImportStudentsCommand(Group group)
         {
             OpenFileDialog dialog = new()
             {
                 Filter = "Csv file (*.csv)|*.csv"
             };
 
-            if(dialog.ShowDialog() == true)
+            if (dialog.ShowDialog() is true)
             {
-                _courseEditModel.ImportStudents(group, dialog.FileName);
+                var results = _courseEditModel.ImportStudents(group, dialog.FileName);
+
+                if (results.IsInvalid)
+                {
+                    CourseEditMessager.CsvReadingErrorMessage(results.Error.Message);
+                }
             }
         }
 
@@ -138,10 +142,12 @@ namespace Task8.ViewModels
                 Filter = "PDF file (*.pdf)|*.pdf"
             };
 
-            if (saveFileDialog.ShowDialog() == true)
+            if (saveFileDialog.ShowDialog() is true)
             {
                 _courseEditModel.BuildPDFReport(saveFileDialog.FileName, group);
             }
+
+            CourseEditMessager.ReportCompleteMessage();
         }
 
         private void BuildDocxReportCommand(Group group)
@@ -153,13 +159,21 @@ namespace Task8.ViewModels
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                _courseEditModel.BuildDocxReport(saveFileDialog.FileName ,group);
+                _courseEditModel.BuildDocxReport(saveFileDialog.FileName, group);
             }
+
+            CourseEditMessager.ReportCompleteMessage();
         }
 
         private void RemoveCommand(Group group)
         {
-            _courseEditModel.RemoveGroup(group);
+            if (!_courseEditModel.RemoveGroup(group))
+            {
+                CourseEditMessager.CantRemoveGroupMessage();
+
+                return;
+            }
+
             RaisePropertyChanged(nameof(Groups));
         }
 
@@ -181,7 +195,10 @@ namespace Task8.ViewModels
 
         private void AddCommand()
         {
-            _courseEditModel.CreateGroup(NewGroupName);
+            if (!_courseEditModel.CreateGroup(NewGroupName))
+            {
+                CourseEditMessager.EmptyGroupNameMessage();
+            }
 
             NewGroupName = "";
 
@@ -189,7 +206,7 @@ namespace Task8.ViewModels
             RaisePropertyChanged(nameof(NewGroupName));
         }
 
-        private void UpdateCommand() 
+        private void UpdateCommand()
         {
             RaisePropertyChanged(nameof(Groups));
         }
@@ -200,7 +217,7 @@ namespace Task8.ViewModels
         {
             if (item is Course)
             {
-                _courseEditModel.InitCourse(item as Course);
+                _courseEditModel.CurrentCourse = item as Course;
                 RaisePropertyChanged(nameof(Teachers));
                 RaisePropertyChanged(nameof(Groups));
             }

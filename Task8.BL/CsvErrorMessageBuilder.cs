@@ -1,18 +1,18 @@
 ﻿using CsvHelper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Properties;
 
 namespace Task8.BL
 {
     public static class CsvErrorMessageBuilder
     {
-        public static string HeaderValidationMessage(HeaderValidationException exception)
+        public static string GetExceptionMessage(HeaderValidationException exception)
         {
-            StringBuilder message = new(Messages.CsvInvalidHeaderMessageBase);
+            ArgumentNullException.ThrowIfNull(exception);
+
+            string messageBase = CsvErrorMessage.InvalidHeadersMessageBase;
+            StringBuilder message = new(messageBase);
 
             foreach (InvalidHeader header in exception.InvalidHeaders)
             {

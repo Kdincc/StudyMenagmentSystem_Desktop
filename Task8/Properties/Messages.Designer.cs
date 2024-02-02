@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Task8.Tests.Properties {
+namespace Task8.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Task8.Tests.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class FilesPath {
+    internal class Messages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal FilesPath() {
+        internal Messages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Task8.Tests.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task8.Tests.Properties.FilesPath", typeof(FilesPath).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task8.Properties.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,47 @@ namespace Task8.Tests.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на \Task8\Task8.Tests\TestFiles\CsvCorrectRecords.csv.
+        ///   Ищет локализованную строку, похожую на A group can not be deleted if there is at least one student in this group..
         /// </summary>
-        internal static string CsvCorrectRecords {
+        internal static string CantRemoveGroupMessage {
             get {
-                return ResourceManager.GetString("CsvCorrectRecords", resourceCulture);
+                return ResourceManager.GetString("CantRemoveGroupMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на \Task8\Task8.Tests\TestFiles\CsvIncorrectRecords.csv.
+        ///   Ищет локализованную строку, похожую на Group must have name !.
         /// </summary>
-        internal static string CsvIncorrectRecords {
+        internal static string EmptyGroupNameMessage {
             get {
-                return ResourceManager.GetString("CsvIncorrectRecords", resourceCulture);
+                return ResourceManager.GetString("EmptyGroupNameMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на \Task8\Task8.Tests\TestFiles\test.pdf.
+        ///   Ищет локализованную строку, похожую на Name and surname of the student can`t be empty !.
         /// </summary>
-        internal static string PdfFile {
+        internal static string EmptyStudentNameMessage {
             get {
-                return ResourceManager.GetString("PdfFile", resourceCulture);
+                return ResourceManager.GetString("EmptyStudentNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Name and surname of the teacher can`t be empty !.
+        /// </summary>
+        internal static string EmptyTeacherNameMessage {
+            get {
+                return ResourceManager.GetString("EmptyTeacherNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Report is complete !.
+        /// </summary>
+        internal static string ReportCompleteMessage {
+            get {
+                return ResourceManager.GetString("ReportCompleteMessage", resourceCulture);
             }
         }
     }

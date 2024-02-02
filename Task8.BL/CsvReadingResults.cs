@@ -1,11 +1,6 @@
 ﻿using CsvHelper;
-using ICSharpCode.SharpZipLib;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task8.BL
 {
@@ -32,17 +27,17 @@ namespace Task8.BL
 
         public bool IsInvalid => _isInvalid;
 
-        public CsvReadingResultsError Error 
+        public CsvReadingResultsError Error
         {
-            get 
+            get
             {
-                if(IsInvalid)
+                if (IsInvalid)
                 {
                     return _error;
                 }
 
                 throw new InvalidOperationException("Cant get the error if results is valid");
-            } 
+            }
         }
     }
 }

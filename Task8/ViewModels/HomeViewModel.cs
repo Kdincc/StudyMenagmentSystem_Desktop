@@ -2,7 +2,6 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
 using System.Collections.ObjectModel;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;

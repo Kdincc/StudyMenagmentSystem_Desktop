@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.Data.Data;
@@ -12,7 +11,7 @@ public partial class Task6Context : DbContext
     }
 
     public Task6Context(DbContextOptions<Task6Context> options)
-        : base(options)
+: base(options)
     {
     }
 
@@ -25,7 +24,12 @@ public partial class Task6Context : DbContext
     public virtual DbSet<Teacher> Teachers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-8PE6CBB\\SQLEXPRESS;Initial Catalog=Task6;Integrated Security=True;TrustServerCertificate=True");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings[ConnectionStringName.DbString.ToString()].ConnectionString);
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -89,4 +93,9 @@ public partial class Task6Context : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    private enum ConnectionStringName
+    {
+        DbString
+    }
 }

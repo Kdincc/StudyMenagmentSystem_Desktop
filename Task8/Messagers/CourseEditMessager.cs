@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Versioning;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Task8.BL.Interfaces;
-using Task8.BL.Properties;
+﻿using System.Windows;
+using Task8.Properties;
 
-namespace Task8.BL.Messagers
+namespace Task8.Messagers
 {
     public static class CourseEditMessager
     {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task8.Data.Entity.Generated
 {
@@ -13,9 +9,9 @@ namespace Task8.Data.Entity.Generated
             return StudentId == other.StudentId && string.Equals(FirstName, other.FirstName) && string.Equals(LastName, other.LastName);
         }
 
-        public override bool Equals(object obj) 
+        public override bool Equals(object obj)
         {
-            if (obj is Student) 
+            if (obj is Student)
             {
                 return Equals(obj as Student);
             }
@@ -23,7 +19,7 @@ namespace Task8.Data.Entity.Generated
             return base.Equals(obj);
         }
 
-        public override int GetHashCode() 
+        public override int GetHashCode()
         {
             return HashCode.Combine(StudentId, FirstName, LastName);
         }

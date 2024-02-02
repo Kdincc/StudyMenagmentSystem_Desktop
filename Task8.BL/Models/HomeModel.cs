@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 
@@ -12,7 +8,7 @@ namespace Task8.BL.Models
     {
         private readonly IRepositoryService _repository;
 
-        public HomeModel(IRepositoryService repository) 
+        public HomeModel(IRepositoryService repository)
         {
             _repository = repository;
         }

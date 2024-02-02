@@ -1,4 +1,6 @@
-﻿using System;
+﻿using iText.Layout;
+using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,7 @@ namespace Task8.Tests
     [TestClass]
     public class PdfServiceTests
     {
-        private readonly IPdfService pdfService = new PdfService();
+        private readonly IPdfService pdfService = new PdfService(new Mock<IDocumentHelper<Document>>().Object);
         private readonly GroupReport _testGroupReport;
 
         public PdfServiceTests()
@@ -39,7 +41,5 @@ namespace Task8.Tests
 
             File.Delete(pathToSave);
         }
-
-     
     }
 }

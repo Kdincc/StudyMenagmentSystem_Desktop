@@ -1,9 +1,4 @@
 ﻿using CsvHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task8.BL
 {
@@ -16,6 +11,6 @@ namespace Task8.BL
             _headerValidationException = ex;
         }
 
-        public string Message => CsvErrorMessageBuilder.HeaderValidationMessage(_headerValidationException);
+        public string Message => CsvErrorMessageBuilder.GetExceptionMessage(_headerValidationException);
     }
 }

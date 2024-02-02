@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Task8.Data.Entity.Generated
+﻿namespace Task8.Data.Entity.Generated
 {
     public partial class Group
     {
@@ -19,7 +13,7 @@ namespace Task8.Data.Entity.Generated
 
         public Group()
         {
-            
+
         }
     }
 }

@@ -22,24 +22,24 @@ namespace Task8.BL.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Messages {
+    public class CsvErrorMessage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Messages() {
+        internal CsvErrorMessage() {
         }
         
         /// <summary>
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task8.BL.Properties.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task8.BL.Properties.CsvErrorMessage", typeof(CsvErrorMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Task8.BL.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,57 +61,12 @@ namespace Task8.BL.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на A group can not be deleted if there is at least one student in this group..
-        /// </summary>
-        internal static string CantRemoveGroupMessage {
-            get {
-                return ResourceManager.GetString("CantRemoveGroupMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid headers in file:
+        ///   Ищет локализованную строку, похожую на &quot;Invalid headers in file:
         ///.
         /// </summary>
-        internal static string CsvInvalidHeaderMessageBase {
+        public static string InvalidHeadersMessageBase {
             get {
-                return ResourceManager.GetString("CsvInvalidHeaderMessageBase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Group must have name !.
-        /// </summary>
-        internal static string EmptyGroupNameMessage {
-            get {
-                return ResourceManager.GetString("EmptyGroupNameMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Name and surname of the student can`t be empty !.
-        /// </summary>
-        internal static string EmptyStudentNameMessage {
-            get {
-                return ResourceManager.GetString("EmptyStudentNameMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Name and surname of the teacher can`t be empty !.
-        /// </summary>
-        internal static string EmptyTeacherNameMessage {
-            get {
-                return ResourceManager.GetString("EmptyTeacherNameMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Report is complete !.
-        /// </summary>
-        internal static string ReportCompleteMessage {
-            get {
-                return ResourceManager.GetString("ReportCompleteMessage", resourceCulture);
+                return ResourceManager.GetString("InvalidHeadersMessageBase", resourceCulture);
             }
         }
     }
