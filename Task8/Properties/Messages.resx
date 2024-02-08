@@ -117,6 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppInfoMessage" xml:space="preserve">
+    <value>This application will help you with managing your study portal
+1. Select the element in the tree whose editing window you want to open, after selecting the element, click on "Edit" and the corresponding editing window will open for you.
+2. To open edit page for teachers, click on "Teachers" </value>
+  </data>
   <data name="CantRemoveGroupMessage" xml:space="preserve">
     <value>A group can not be deleted if there is at least one student in this group.</value>
   </data>

@@ -63,36 +63,6 @@ namespace Task8.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HomePageInfo {
-            get {
-                object obj = ResourceManager.GetObject("HomePageInfo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap OIP {
-            get {
-                object obj = ResourceManager.GetObject("OIP", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Update_Button_PNG_Image_Background {
-            get {
-                object obj = ResourceManager.GetObject("Update_Button_PNG_Image_Background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Update_Button_PNG_Image_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("Update_Button_PNG_Image_removebg_preview", resourceCulture);

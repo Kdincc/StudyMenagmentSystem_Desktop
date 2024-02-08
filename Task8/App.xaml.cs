@@ -35,7 +35,6 @@ namespace Task8
             containerRegistry.Register<IDocumentHelper<iText.Layout.Document>, PdfHelper>();
             containerRegistry.Register<IDocumentHelper<XWPFDocument>, DocxHelper>();
             containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
-            containerRegistry.RegisterDialog<InfoDialog, InfoDialogViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

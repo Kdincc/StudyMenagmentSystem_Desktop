@@ -7,6 +7,7 @@ using System;
 using System.Windows;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
+using Task8.Messagers;
 using Task8.Views;
 
 namespace Task8.ViewModels
@@ -108,12 +109,7 @@ namespace Task8.ViewModels
 
         private void OpenInfoDialog()
         {
-            DialogParameters parameters = new()
-            {
-                { "Image", @"E:\Task8\Task8\Resources\Снимок.PNG" }
-            };
-
-            _dialogService.ShowDialog(DialogNames.InfoDialog.ToString(), parameters, r => { });
+            MainWindowMessager.ShowAppInfoMessage();
         }
 
         #endregion

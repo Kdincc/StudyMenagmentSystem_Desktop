@@ -130,7 +130,7 @@ namespace Task8.ViewModels
 
                 if (results.IsInvalid)
                 {
-                    CourseEditMessager.CsvReadingErrorMessage(results.Error.Message);
+                    CourseEditMessager.ShowCsvReadingErrorMessage(results.Error.Message);
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace Task8.ViewModels
                 _courseEditModel.BuildPDFReport(saveFileDialog.FileName, group);
             }
 
-            CourseEditMessager.ReportCompleteMessage();
+            CourseEditMessager.ShowReportCompleteMessage();
         }
 
         private void BuildDocxReportCommand(Group group)
@@ -162,14 +162,14 @@ namespace Task8.ViewModels
                 _courseEditModel.BuildDocxReport(saveFileDialog.FileName, group);
             }
 
-            CourseEditMessager.ReportCompleteMessage();
+            CourseEditMessager.ShowReportCompleteMessage();
         }
 
         private void RemoveCommand(Group group)
         {
             if (!_courseEditModel.RemoveGroup(group))
             {
-                CourseEditMessager.CantRemoveGroupMessage();
+                CourseEditMessager.ShowCantRemoveGroupMessage();
 
                 return;
             }
@@ -197,7 +197,7 @@ namespace Task8.ViewModels
         {
             if (!_courseEditModel.CreateGroup(NewGroupName))
             {
-                CourseEditMessager.EmptyGroupNameMessage();
+                CourseEditMessager.ShowEmptyGroupNameMessage();
             }
 
             NewGroupName = "";

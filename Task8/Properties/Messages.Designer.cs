@@ -61,6 +61,17 @@ namespace Task8.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на This application will help you with managing your study portal
+        ///1. Select the element in the tree whose editing window you want to open, after selecting the element, click on &quot;Edit&quot; and the corresponding editing window will open for you.
+        ///2. To open edit page for teachers, click on &quot;Teachers&quot; .
+        /// </summary>
+        internal static string AppInfoMessage {
+            get {
+                return ResourceManager.GetString("AppInfoMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на A group can not be deleted if there is at least one student in this group..
         /// </summary>
         internal static string CantRemoveGroupMessage {
