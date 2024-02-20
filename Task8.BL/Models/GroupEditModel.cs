@@ -53,12 +53,22 @@ namespace Task8.BL.Models
         {
             ArgumentNullException.ThrowIfNull(studentToChange, nameof(studentToChange));
 
+            if (studentToChange.FirstName == newName) 
+            {
+                return;
+            }
+
             Students.First(s => s.StudentId == studentToChange.StudentId).FirstName = newName;
         }
 
         public void ChangeStudentLastName(Student studentToChange, string newLastName)
         {
             ArgumentNullException.ThrowIfNull(studentToChange, nameof(studentToChange));
+
+            if (studentToChange.LastName == newLastName) 
+            {
+                return;
+            }
 
             Students.First(s => s.StudentId == studentToChange.StudentId).LastName = newLastName;
         }

@@ -14,8 +14,6 @@ namespace Task8.ViewModels
         private string _newTeacherSurname;
         private string _changedTeacherName;
         private string _changedTeacherSurname;
-        private bool _isTeacherNameChanged = false;
-        private bool _isTeacherSurnameChanged = false;
 
         public TeachersViewModel(ITeachersModel teachersModel)
         {
@@ -43,8 +41,6 @@ namespace Task8.ViewModels
 
         #region Commands
 
-        public DelegateCommand SelectionChanged => new(SelectionChangedCommand);
-
         public DelegateCommand<string> TeacherNameChanged => new(TeacherNameChangedCommand);
 
         public DelegateCommand<string> TeacherSurnameChanged => new(TeacherSurnameChangedCommand);
@@ -57,22 +53,14 @@ namespace Task8.ViewModels
 
         public DelegateCommand Add => new(AddCommand);
 
-        private void SelectionChangedCommand()
-        {
-            _isTeacherNameChanged = false;
-            _isTeacherSurnameChanged = false;
-        }
-
         private void TeacherSurnameChangedCommand(string newSurname)
         {
             _changedTeacherSurname = newSurname;
-            _isTeacherSurnameChanged = true;
         }
 
         private void TeacherNameChangedCommand(string newName)
         {
             _changedTeacherName = newName;
-            _isTeacherNameChanged = true;
         }
 
         private void UpdateCommand()
@@ -82,12 +70,12 @@ namespace Task8.ViewModels
 
         private void SaveCommand(Teacher teacher)
         {
-            if (_isTeacherNameChanged)
+            if (_changedTeacherName is not null)
             {
                 _teachersModel.ChangeTeacherName(teacher, _changedTeacherName);
             }
 
-            if (_isTeacherSurnameChanged)
+            if (_changedTeacherSurname is not null)
             {
                 _teachersModel.ChangeTeacherSurname(teacher, _changedTeacherSurname);
             }

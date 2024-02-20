@@ -1,9 +1,4 @@
 ﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.BL.Models;
 using Task8.Data.Entity.Generated;
@@ -22,7 +17,7 @@ namespace Task8.Tests
         }
 
         [TestMethod]
-        public void CreateStudent_IsAddedToRepository() 
+        public void CreateStudent_IsAddedToRepository()
         {
             _groupEditModel.CreateStudent("Test", "Test");
 
@@ -54,7 +49,7 @@ namespace Task8.Tests
         {
             string actualName;
             string expectedName = "Changed";
-            Student student = new Student() { FirstName = "Test"};
+            Student student = new Student() { FirstName = "Test" };
             Group group = new() { Students = new List<Student>() { student } };
 
             _groupEditModel.Group = group;
@@ -65,7 +60,7 @@ namespace Task8.Tests
         }
 
         [TestMethod]
-        public void ChangeStudentLastName_IsChanged() 
+        public void ChangeStudentLastName_IsChanged()
         {
             string actualLastName;
             string expectedLastName = "Changed";
@@ -75,7 +70,7 @@ namespace Task8.Tests
             _groupEditModel.Group = group;
             _groupEditModel.ChangeStudentLastName(student, expectedLastName);
             actualLastName = student.LastName;
-            
+
             Assert.AreEqual(expectedLastName, actualLastName);
         }
     }

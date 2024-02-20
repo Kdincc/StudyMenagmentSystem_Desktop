@@ -1,9 +1,4 @@
 ﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.BL.Models;
 using Task8.Data.Entity.Generated;
@@ -13,7 +8,7 @@ namespace Task8.Tests
     [TestClass]
     public class TeachersModelTests
     {
-        private readonly Mock<IRepositoryService>  _repositoryService = new();
+        private readonly Mock<IRepositoryService> _repositoryService = new();
         private readonly TeachersModel _teachersModel;
 
         public TeachersModelTests()
@@ -34,7 +29,7 @@ namespace Task8.Tests
         {
             string actual;
             string expected = "Changed";
-            Teacher teacher = new() { Name = "Test"};
+            Teacher teacher = new() { Name = "Test" };
 
             _repositoryService.SetupGet(t => t.Teachers).Returns(new List<Teacher>() { teacher });
 

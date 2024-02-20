@@ -2,7 +2,6 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
-using Prism.Services.Dialogs;
 using System;
 using System.Windows;
 using Task8.Data.Entity.Generated;
@@ -19,20 +18,11 @@ namespace Task8.ViewModels
         private object _selectedItem;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
-        private readonly IDialogService _dialogService;
 
-        public MainWindowViewModel(IRegionManager regionManager, IEventAggregator eventAggregator, IDialogService dialogService)
+        public MainWindowViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
-            _dialogService = dialogService;
-
-            DragWindowCommand = new(DragWindow);
-            ExitCommand = new(Exit);
-            MinimizeCommand = new(Minimize);
-            NavigateToHomeCommand = new(NavigateToHome);
-            NavigateToEdit = new(NavigateToEditCommand);
-            InfoDialogCommand = new(OpenInfoDialog);
 
             _eventAggregator.GetEvent<TreeItemSelectedEvent>().Subscribe(OnTreeItemSelected);
         }
@@ -66,17 +56,18 @@ namespace Task8.ViewModels
         }
 
         #region Commands
-        public DelegateCommand DragWindowCommand { get; }
 
-        public DelegateCommand ExitCommand { get; }
+        public DelegateCommand DragWindowCommand => new(DragWindow);
 
-        public DelegateCommand MinimizeCommand { get; }
+        public DelegateCommand ExitCommand => new(Exit);
 
-        public DelegateCommand NavigateToHomeCommand { get; }
+        public DelegateCommand MinimizeCommand => new(Minimize);
 
-        public DelegateCommand NavigateToEdit { get; }
+        public DelegateCommand NavigateToHomeCommand => new(NavigateToHome);
 
-        public DelegateCommand InfoDialogCommand { get; }
+        public DelegateCommand NavigateToEditCommand => new(NavigateToEdit);
+
+        public DelegateCommand ShowInfoCommand => new(ShowInfo);
 
         private void NavigateToHome()
         {
@@ -84,7 +75,7 @@ namespace Task8.ViewModels
             _eventAggregator.GetEvent<HomeNavigateEvent>().Publish();
         }
 
-        private void NavigateToEditCommand()
+        private void NavigateToEdit()
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), CastSelectedItem());
             _eventAggregator.GetEvent<EditNavigateEvent>().Publish(_selectedItem);
@@ -107,7 +98,7 @@ namespace Task8.ViewModels
             Application.Current.MainWindow.DragMove();
         }
 
-        private void OpenInfoDialog()
+        private void ShowInfo()
         {
             MainWindowMessager.ShowAppInfoMessage();
         }

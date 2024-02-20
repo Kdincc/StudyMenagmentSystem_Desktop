@@ -1,12 +1,4 @@
-﻿using iText.IO.Font.Otf;
-using MathNet.Numerics.Distributions;
-using NPOI.HSSF.Record.Aggregates;
-using NPOI.XWPF.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NPOI.XWPF.UserModel;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.Tests

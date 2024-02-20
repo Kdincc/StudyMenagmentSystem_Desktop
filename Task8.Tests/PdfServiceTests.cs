@@ -1,13 +1,7 @@
 ﻿using iText.Layout;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
-using Task8.Tests.Properties;
 
 namespace Task8.Tests
 {

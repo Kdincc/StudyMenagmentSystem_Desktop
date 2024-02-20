@@ -122,6 +122,11 @@ namespace Task8.BL.Models
         {
             ArgumentNullException.ThrowIfNull(groupToChange, nameof(groupToChange));
 
+            if (groupToChange.Name == newName)
+            {
+                return;
+            }
+
             Groups.First(g => g.GroupId == groupToChange.GroupId).Name = newName;
         }
 
@@ -129,6 +134,11 @@ namespace Task8.BL.Models
         {
             ArgumentNullException.ThrowIfNull(groupToChange, nameof(groupToChange));
             ArgumentNullException.ThrowIfNull(newTeacher, nameof(newTeacher));
+
+            if (groupToChange.Teacher == newTeacher)
+            {
+                return;
+            }
 
             Groups.First(g => g.GroupId == groupToChange.GroupId).Teacher = newTeacher;
         }

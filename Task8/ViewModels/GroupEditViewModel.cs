@@ -16,8 +16,6 @@ namespace Task8.ViewModels
         private string _newStudentLastName;
         private string _changedStudentName;
         private string _changedStudentLastName;
-        private bool _isStudentNameChanged = false;
-        private bool _isStudentLastNameChanged = false;
 
         public GroupEditViewModel(IGroupEditModel model, IEventAggregator eventAggregator)
         {
@@ -46,8 +44,6 @@ namespace Task8.ViewModels
 
         #region Commands
 
-        public DelegateCommand SelectionChanged => new(SelectionChangedCommand);
-
         public DelegateCommand<string> StudentLastNameChanged => new(StudentLastNameChangedCommand);
 
         public DelegateCommand<string> StudentNameChanged => new(StudentNameChangedCommand);
@@ -60,21 +56,13 @@ namespace Task8.ViewModels
 
         public DelegateCommand Add => new(AddCommand);
 
-        private void SelectionChangedCommand()
-        {
-            _isStudentLastNameChanged = false;
-            _isStudentNameChanged = false;
-        }
-
         private void StudentLastNameChangedCommand(string newLastName)
         {
-            _isStudentLastNameChanged = true;
             _changedStudentLastName = newLastName;
         }
 
         private void StudentNameChangedCommand(string newName)
         {
-            _isStudentNameChanged = true;
             _changedStudentName = newName;
         }
 
@@ -85,12 +73,12 @@ namespace Task8.ViewModels
 
         private void SaveCommand(Student student)
         {
-            if (_isStudentNameChanged)
+            if (_changedStudentName is not null)
             {
                 _model.ChangeStudentName(student, _changedStudentName);
             }
 
-            if (_isStudentLastNameChanged)
+            if (_changedStudentLastName is not null)
             {
                 _model.ChangeStudentLastName(student, _changedStudentLastName);
             }

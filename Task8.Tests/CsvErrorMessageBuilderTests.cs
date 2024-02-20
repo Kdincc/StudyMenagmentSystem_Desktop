@@ -1,12 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using NPOI.SS.Formula.Functions;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Properties;
 
 namespace Task8.Tests

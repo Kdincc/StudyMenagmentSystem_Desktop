@@ -1,4 +1,3 @@
-using CsvHelper;
 using Task8.BL.Interfaces;
 using Task8.Data.Entity.Generated;
 using Task8.Tests.Properties;
@@ -33,7 +32,7 @@ namespace Task8.Tests
         public void GetStudentsFrom_IncorrectRecords()
         {
             string recordPath = FilesPath.CsvIncorrectRecords;
-            
+
             bool actual = _csvService.GetStudentsFrom(recordPath).Error is not null;
 
             Assert.IsTrue(actual);

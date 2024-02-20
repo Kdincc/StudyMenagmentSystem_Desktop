@@ -122,7 +122,7 @@ namespace Task8.Tests
         {
             string path = FilesPath.CsvIncorrectRecords;
             Group group = new();
-            List <Student> expectedStudents = new()
+            List<Student> expectedStudents = new()
             {
                 new Student { FirstName = "Patsy", LastName = "Stone" },
                 new Student { FirstName = "Minnie", LastName = "Paul" },
@@ -153,7 +153,7 @@ namespace Task8.Tests
         public void ChangeGroupName_IsNameChangedCorrectly()
         {
             string expected = "ChangedName";
-            Group group = new() { GroupId = 1, Name = "Test"};
+            Group group = new() { GroupId = 1, Name = "Test" };
             Course course = new() { Groups = new List<Group>() { group } };
 
             model.CurrentCourse = course;

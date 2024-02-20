@@ -95,7 +95,7 @@
                      Content="Edit"
                      FontFamily="/Fonts/#Poppins"
                      Style="{StaticResource MenuButton}"
-                     Command="{Binding NavigateToEdit}"
+                     Command="{Binding NavigateToEditCommand}"
                      ToolTip="Navigate to edit page of selected item">
 
                 </Button>

@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Task8.BL.Interfaces;
 using Task8.Data.Data;
 using Task8.Data.Entity.Generated;
@@ -14,11 +17,6 @@ namespace Task8.BL
         public RepositoryService(Task6Context context)
         {
             _context = context;
-
-            if (!_context.Database.CanConnect())
-            {
-                _context.Database.Migrate();
-            }
         }
 
         public IEnumerable<Course> Courses => _context.Courses.Include(c => c.Groups).ThenInclude(t => t.Teacher).Include(g => g.Groups).ThenInclude(s => s.Students);
@@ -44,6 +42,26 @@ namespace Task8.BL
             ArgumentNullException.ThrowIfNull(student, nameof(student));
 
             _context.Students.Add(student);
+        }
+
+        public void LoadPressets()
+        {
+            if (Courses.IsNullOrEmpty())
+            {
+                string pressetPath = "\\Task8\\Task8.BL\\Pressets.json";
+                string jsonString = File.ReadAllText(pressetPath);
+
+                var presset = JsonConvert.DeserializeObject<DataPresset>(jsonString);
+
+                _context.Courses.AddRange(presset.Courses);
+
+                if (Teachers.IsNullOrEmpty())
+                {
+                    _context.Teachers.AddRange(presset.Teachers);
+                }
+
+                _context.SaveChanges();
+            }
         }
 
         public void Remove(Group group)

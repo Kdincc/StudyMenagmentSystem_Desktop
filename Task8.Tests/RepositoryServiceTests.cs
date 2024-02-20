@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task8.BL.Interfaces;
 using Task8.Data.Data;
 using Task8.Data.Entity.Generated;
@@ -35,7 +30,7 @@ namespace Task8.Tests
         public void Add_Group_AddsToDbContext()
         {
             Group groupToAdd = new();
-            
+
             _repositoryService.Add(groupToAdd);
 
             moqContext.Verify(x => x.Groups.Add(It.IsAny<Group>()), Times.Once);

@@ -1,0 +1,27 @@
+{
+  "Courses": [
+    {
+      "Name": "SQL",
+      "Description": "",
+      "Groups": []
+    },
+    {
+      "Name": "Java",
+      "Description": "",
+      "Groups": []
+    },
+    {
+      "Name": "C#",
+      "Description": "",
+      "Groups": []
+    }
+  ],
+
+  "Teachers": [
+    {
+      "Name": "Test name",
+      "Surname": "Test surname",
+      "Groups": []
+    }
+  ]
+}

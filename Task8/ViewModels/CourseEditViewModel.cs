@@ -16,11 +16,8 @@ namespace Task8.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private string _newGroupName;
         private string _changedGroupName;
-        private Teacher _newTeacher;
+        private Teacher _changedTeacher;
         private Group _selectedGroup;
-        private bool _isGroupNameChanged = false;
-        private bool _isTeacherChanged = false;
-
         private bool _isToolBarButtonsActive = false;
 
         public CourseEditViewModel(ICourseEditModel courseEditModel, IEventAggregator eventAggregator)
@@ -68,8 +65,6 @@ namespace Task8.ViewModels
 
         public DelegateCommand<string> GroupNameChanged => new(GroupNameChangedCommand);
 
-        public DelegateCommand SelectionChanged => new(SelectionChangedCommand);
-
         public DelegateCommand Update => new(UpdateCommand);
 
         public DelegateCommand<Group> BuildPdfReport => new(BuildPdfReportCommand);
@@ -88,20 +83,12 @@ namespace Task8.ViewModels
 
         private void TeacherChangedCommand(Teacher teacher)
         {
-            _isTeacherChanged = true;
-            _newTeacher = teacher;
+            _changedTeacher = teacher;
         }
 
         private void GroupNameChangedCommand(string name)
         {
-            _isGroupNameChanged = true;
             _changedGroupName = name;
-        }
-
-        private void SelectionChangedCommand()
-        {
-            _isGroupNameChanged = false;
-            _isTeacherChanged = false;
         }
 
         private void ExportStudentsCommand(Group group)
@@ -179,14 +166,14 @@ namespace Task8.ViewModels
 
         private void SaveCommand(Group group)
         {
-            if (_isGroupNameChanged)
+            if (_changedGroupName is not null)
             {
                 _courseEditModel.ChangeGroupName(group, _changedGroupName);
             }
 
-            if (_isTeacherChanged)
+            if (_changedTeacher is not null)
             {
-                _courseEditModel.ChangeGroupTeacher(group, _newTeacher);
+                _courseEditModel.ChangeGroupTeacher(group, _changedTeacher);
             }
 
             _courseEditModel.SaveChanges();

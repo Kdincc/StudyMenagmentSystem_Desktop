@@ -21,12 +21,22 @@ namespace Task8.BL.Models
         {
             ArgumentNullException.ThrowIfNull(teacherToChange, nameof(teacherToChange));
 
+            if (teacherToChange.Name == newName)
+            {
+                return;
+            }
+
             Teachers.First(t => t.TeacherId == teacherToChange.TeacherId).Name = newName;
         }
 
         public void ChangeTeacherSurname(Teacher teacherToChange, string newSurname)
         {
             ArgumentNullException.ThrowIfNull(teacherToChange, nameof(teacherToChange));
+
+            if (teacherToChange.Surname == newSurname)
+            {
+                return;
+            }
 
             Teachers.First(t => t.TeacherId == teacherToChange.TeacherId).Surname = newSurname;
         }

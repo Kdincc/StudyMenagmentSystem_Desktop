@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.Data.Data;
@@ -23,16 +25,41 @@ public partial class Task6Context : DbContext
 
     public virtual DbSet<Teacher> Teachers { get; set; }
 
+    public void MigrateNotAppliedMigrations()
+    {
+        if (Database.GetPendingMigrations().Any())
+        {
+            Database.Migrate();
+        }
+    }
+
+    private static string GetConnectionString(string configPath)
+    {
+        if (!File.Exists(configPath))
+        {
+            throw new FileNotFoundException(configPath);
+        }
+
+        var jsonString = File.ReadAllText(configPath);
+        ConfigurationFile config = JsonSerializer.Deserialize<ConfigurationFile>(jsonString);
+
+        return config.ConnectionString;
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        string configPath = "\\Task8\\Task8.Data\\Config.json";
+
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings[ConnectionStringName.DbString.ToString()].ConnectionString);
+            optionsBuilder.UseSqlServer(GetConnectionString(configPath));
         }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        MigrateNotAppliedMigrations();
+
         modelBuilder.Entity<Course>(entity =>
         {
             entity.HasKey(e => e.CourseId).HasName("PK__COURSES__71CB31DB72DA58AE");
@@ -93,9 +120,4 @@ public partial class Task6Context : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    private enum ConnectionStringName
-    {
-        DbString
-    }
 }
