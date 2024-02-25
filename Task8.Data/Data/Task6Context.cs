@@ -33,7 +33,7 @@ public partial class Task6Context : DbContext
         }
     }
 
-    private static string GetConnectionString(string configPath)
+    private string GetConnectionString(string configPath)
     {
         if (!File.Exists(configPath))
         {
@@ -48,7 +48,7 @@ public partial class Task6Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string configPath = "\\Task8\\Task8.Data\\Config.json";
+        string configPath = "\\Task8\\Task8\\Config.json";
 
         if (!optionsBuilder.IsConfigured)
         {
