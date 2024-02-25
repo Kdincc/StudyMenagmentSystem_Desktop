@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System.Collections.ObjectModel;
 using Task8.BL.Interfaces;
+using Task8.Data.Entity;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
 using Task8.Views;
@@ -35,13 +36,13 @@ namespace Task8.ViewModels
 
         public ObservableCollection<Course> Courses => new(_homeModel.Courses);
 
-        public DelegateCommand<object> SelectedItemChangedCommand { get; }
+        public DelegateCommand<DbEntity> SelectedItemChangedCommand { get; }
 
         public DelegateCommand NavigateToTeachers { get; }
 
-        private void SelectedItemChanged(object obj)
+        private void SelectedItemChanged(DbEntity entity)
         {
-            _eventAggregator.GetEvent<TreeItemSelectedEvent>().Publish(obj);
+            _eventAggregator.GetEvent<TreeItemSelectedEvent>().Publish(entity);
         }
 
         private void NavigateToTeachersCommand()

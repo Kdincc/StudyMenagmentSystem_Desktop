@@ -4,6 +4,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Windows;
+using Task8.Data.Entity;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
 using Task8.Messagers;
@@ -15,7 +16,7 @@ namespace Task8.ViewModels
     {
         private string _title = "Task 8";
         private bool _isEditButtonActive = false;
-        private object _selectedItem;
+        private DbEntity _selectedItem;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
 
@@ -39,7 +40,7 @@ namespace Task8.ViewModels
             set { SetProperty(ref _isEditButtonActive, value); }
         }
 
-        private void OnTreeItemSelected(object item)
+        private void OnTreeItemSelected(DbEntity item)
         {
             _selectedItem = item;
             IsEditButtonActive = true;

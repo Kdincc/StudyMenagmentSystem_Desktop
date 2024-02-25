@@ -4,6 +4,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 using Task8.BL.Interfaces;
+using Task8.Data.Entity;
 using Task8.Data.Entity.Generated;
 using Task8.Events;
 using Task8.Messagers;
@@ -200,11 +201,11 @@ namespace Task8.ViewModels
 
         #endregion
 
-        private void OnNavigate(object item)
+        private void OnNavigate(DbEntity entity)
         {
-            if (item is Course)
+            if (entity is Course)
             {
-                _courseEditModel.CurrentCourse = item as Course;
+                _courseEditModel.CurrentCourse = entity as Course;
                 RaisePropertyChanged(nameof(Teachers));
                 RaisePropertyChanged(nameof(Groups));
             }
