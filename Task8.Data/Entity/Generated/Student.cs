@@ -3,7 +3,7 @@ using System;
 
 namespace Task8.Data.Entity.Generated;
 
-public class Student : IEquatable<Student>
+public class Student : DbEntity, IEquatable<Student>
 {
     [Ignore]
     public int StudentId { get; set; }

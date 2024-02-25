@@ -2,7 +2,7 @@
 
 namespace Task8.Data.Entity.Generated;
 
-public class Teacher
+public class Teacher : DbEntity
 {
     public int TeacherId { get; set; }
 
