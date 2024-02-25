@@ -2,7 +2,7 @@
 
 namespace Task8.Data.Entity.Generated;
 
-public partial class Course
+public class Course
 {
     public int CourseId { get; set; }
 

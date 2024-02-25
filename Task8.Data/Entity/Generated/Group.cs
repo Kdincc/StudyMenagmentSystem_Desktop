@@ -2,7 +2,7 @@
 
 namespace Task8.Data.Entity.Generated;
 
-public partial class Group
+public class Group
 {
     public int GroupId { get; set; }
 
