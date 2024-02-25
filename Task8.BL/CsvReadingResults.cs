@@ -27,17 +27,6 @@ namespace Task8.BL
 
         public bool IsInvalid => _isInvalid;
 
-        public CsvReadingResultsError Error
-        {
-            get
-            {
-                if (IsInvalid)
-                {
-                    return _error;
-                }
-
-                throw new InvalidOperationException("Cant get the error if results is valid");
-            }
-        }
+        public CsvReadingResultsError Error => _error;
     }
 }
