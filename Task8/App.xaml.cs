@@ -34,7 +34,7 @@ namespace Task8
             containerRegistry.Register<ICsvService, CsvService>();
             containerRegistry.Register<IDocumentHelper<iText.Layout.Document>, PdfHelper>();
             containerRegistry.Register<IDocumentHelper<XWPFDocument>, DocxHelper>();
-            containerRegistry.RegisterSingleton<IRepositoryService, RepositoryService>();
+            containerRegistry.RegisterSingleton<IRepositoryService, Repository>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

@@ -9,11 +9,11 @@ using Task8.Data.Entity.Generated;
 
 namespace Task8.BL
 {
-    public class RepositoryService
+    public class Repository
     {
         private readonly Task6Context _context;
 
-        public RepositoryService(Task6Context context)
+        public Repository(Task6Context context)
         {
             _context = context;
         }
