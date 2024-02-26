@@ -15,7 +15,7 @@ namespace Task8.Tests
 
         private readonly Mock<IPdfService> pdfMock = new();
         private readonly Mock<IDocxService> docxMock = new();
-        private readonly Mock<IRepositoryService> repositoryMock = new();
+        private readonly Mock<Repository> repositoryMock = new();
         private readonly Mock<ICsvService> svMock = new();
         private readonly ICourseEditModel model;
 

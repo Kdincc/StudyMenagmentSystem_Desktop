@@ -8,7 +8,7 @@ namespace Task8.Tests
     [TestClass]
     public class GroupEditTests
     {
-        private readonly Mock<IRepositoryService> _repositoryMock = new();
+        private readonly Mock<Repository> _repositoryMock = new();
         private readonly GroupEditModel _groupEditModel;
 
         public GroupEditTests()

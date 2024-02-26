@@ -8,7 +8,7 @@ namespace Task8.Tests
     [TestClass]
     public class TeachersModelTests
     {
-        private readonly Mock<IRepositoryService> _repositoryService = new();
+        private readonly Mock<Repository> _repositoryService = new();
         private readonly TeachersModel _teachersModel;
 
         public TeachersModelTests()

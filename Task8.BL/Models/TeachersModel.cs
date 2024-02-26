@@ -8,9 +8,9 @@ namespace Task8.BL.Models
 {
     public class TeachersModel : ITeachersModel
     {
-        private readonly IRepositoryService _repositoryService;
+        private readonly Repository _repositoryService;
 
-        public TeachersModel(IRepositoryService repositoryService)
+        public TeachersModel(Repository repositoryService)
         {
             _repositoryService = repositoryService;
         }

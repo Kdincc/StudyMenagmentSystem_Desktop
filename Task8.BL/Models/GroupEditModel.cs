@@ -9,9 +9,9 @@ namespace Task8.BL.Models
     public class GroupEditModel : IGroupEditModel
     {
         private Group _currentGroup = new();
-        private readonly IRepositoryService _repositoryService;
+        private readonly Repository _repositoryService;
 
-        public GroupEditModel(IRepositoryService repositoryService)
+        public GroupEditModel(Repository repositoryService)
         {
             _repositoryService = repositoryService;
         }

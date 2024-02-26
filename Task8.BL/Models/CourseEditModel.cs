@@ -12,9 +12,9 @@ namespace Task8.BL.Models
         private readonly IDocxService _docxBuilder;
         private readonly IPdfService _pdfBuilder;
         private readonly ICsvService _csvService;
-        private readonly IRepositoryService _repository;
+        private readonly Repository _repository;
 
-        public CourseEditModel(IRepositoryService repository, IDocxService docxBuilder, IPdfService pdfBuilder, ICsvService csvService)
+        public CourseEditModel(Repository repository, IDocxService docxBuilder, IPdfService pdfBuilder, ICsvService csvService)
         {
             _docxBuilder = docxBuilder;
             _pdfBuilder = pdfBuilder;
