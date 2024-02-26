@@ -1,15 +1,16 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using Task8.BL.Interfaces;
+using Task8.Data;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
 {
     public class HomeModel : IHomeModel
     {
-        private readonly Repository _repository;
+        private readonly IRepository _repository;
 
-        public HomeModel(Repository repository)
+        public HomeModel(IRepository repository)
         {
             _repository = repository;
         }

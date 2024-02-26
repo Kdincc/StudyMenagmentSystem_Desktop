@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Task8.BL.Interfaces;
+using Task8.Data;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
@@ -12,9 +13,9 @@ namespace Task8.BL.Models
         private readonly IDocxService _docxBuilder;
         private readonly IPdfService _pdfBuilder;
         private readonly ICsvService _csvService;
-        private readonly Repository _repository;
+        private readonly IRepository _repository;
 
-        public CourseEditModel(Repository repository, IDocxService docxBuilder, IPdfService pdfBuilder, ICsvService csvService)
+        public CourseEditModel(IRepository repository, IDocxService docxBuilder, IPdfService pdfBuilder, ICsvService csvService)
         {
             _docxBuilder = docxBuilder;
             _pdfBuilder = pdfBuilder;

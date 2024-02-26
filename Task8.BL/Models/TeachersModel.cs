@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using Task8.BL.Interfaces;
+using Task8.Data;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
 {
     public class TeachersModel : ITeachersModel
     {
-        private readonly Repository _repositoryService;
+        private readonly IRepository _repositoryService;
 
-        public TeachersModel(Repository repositoryService)
+        public TeachersModel(IRepository repositoryService)
         {
             _repositoryService = repositoryService;
         }

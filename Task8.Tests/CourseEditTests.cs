@@ -4,6 +4,7 @@ using Moq;
 using System.Globalization;
 using Task8.BL.Interfaces;
 using Task8.BL.Models;
+using Task8.Data;
 using Task8.Data.Entity.Generated;
 using Task8.Tests.Properties;
 
@@ -15,7 +16,7 @@ namespace Task8.Tests
 
         private readonly Mock<IPdfService> pdfMock = new();
         private readonly Mock<IDocxService> docxMock = new();
-        private readonly Mock<Repository> repositoryMock = new();
+        private readonly Mock<IRepository> repositoryMock = new();
         private readonly Mock<ICsvService> svMock = new();
         private readonly ICourseEditModel model;
 

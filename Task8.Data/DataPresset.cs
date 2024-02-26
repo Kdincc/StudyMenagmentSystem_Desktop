@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Task8.Data.Entity.Generated;
 
-namespace Task8.BL
+namespace Task8.Data
 {
     internal class DataPresset
     {

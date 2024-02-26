@@ -6,6 +6,7 @@ using Task8.BL;
 using Task8.BL.Interfaces;
 using Task8.BL.Models;
 using Task8.BL.Services;
+using Task8.Data;
 using Task8.Data.Data;
 using Task8.ViewModels;
 using Task8.Views;
@@ -34,7 +35,7 @@ namespace Task8
             containerRegistry.Register<ICsvService, CsvService>();
             containerRegistry.Register<IDocumentHelper<iText.Layout.Document>, PdfHelper>();
             containerRegistry.Register<IDocumentHelper<XWPFDocument>, DocxHelper>();
-            containerRegistry.RegisterSingleton<Repository>();
+            containerRegistry.RegisterSingleton<IRepository, Repository>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

@@ -1,6 +1,7 @@
 ﻿using Moq;
 using Task8.BL.Interfaces;
 using Task8.BL.Models;
+using Task8.Data;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.Tests
@@ -8,7 +9,7 @@ namespace Task8.Tests
     [TestClass]
     public class TeachersModelTests
     {
-        private readonly Mock<Repository> _repositoryService = new();
+        private readonly Mock<IRepository> _repositoryService = new();
         private readonly TeachersModel _teachersModel;
 
         public TeachersModelTests()

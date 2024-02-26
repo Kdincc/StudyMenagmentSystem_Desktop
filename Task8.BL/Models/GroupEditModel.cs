@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Task8.BL.Interfaces;
+using Task8.Data;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL.Models
@@ -9,9 +10,9 @@ namespace Task8.BL.Models
     public class GroupEditModel : IGroupEditModel
     {
         private Group _currentGroup = new();
-        private readonly Repository _repositoryService;
+        private readonly IRepository _repositoryService;
 
-        public GroupEditModel(Repository repositoryService)
+        public GroupEditModel(IRepository repositoryService)
         {
             _repositoryService = repositoryService;
         }
