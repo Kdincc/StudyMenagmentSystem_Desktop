@@ -4,13 +4,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Task8.BL.Interfaces;
 using Task8.Data.Data;
 using Task8.Data.Entity.Generated;
 
 namespace Task8.BL
 {
-    public class RepositoryService : IRepositoryService
+    public class RepositoryService
     {
         private readonly Task6Context _context;
 
