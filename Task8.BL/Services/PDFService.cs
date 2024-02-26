@@ -22,27 +22,24 @@ namespace Task8.BL
             ArgumentNullException.ThrowIfNull(savePath, nameof(savePath));
             ArgumentNullException.ThrowIfNull(report, nameof(report));
 
-            using (PdfWriter writer = new(savePath))
-            {
-                using (PdfDocument pdf = new(writer))
-                {
-                    int fontSize = 14;
+            using PdfWriter writer = new(savePath);
+            using PdfDocument pdf = new(writer);
+            Document document = new(pdf);
 
-                    Document document = new(pdf);
+            int fontSize = 14;
+            int titleFontSize = 16;
 
-                    var fontProvider = new FontProvider();
-                    fontProvider.AddSystemFonts();
+            var fontProvider = new FontProvider();
+            fontProvider.AddSystemFonts();
 
-                    document.SetFont(PdfFontFactory.CreateFont());
-                    document.SetFontProvider(fontProvider);
+            document.SetFont(PdfFontFactory.CreateFont());
+            document.SetFontProvider(fontProvider);
 
-                    _helper.BuildHeader(document, report.CourseNameHeader, fontSize, DocumentFont.TimesNewRoman, true);
+            _helper.BuildHeader(document, report.CourseNameHeader, titleFontSize, DocumentFont.TimesNewRoman, true);
 
-                    _helper.BuildHeader(document, report.GroupNameHeader, fontSize, DocumentFont.TimesNewRoman);
+            _helper.BuildHeader(document, report.GroupNameHeader, titleFontSize, DocumentFont.TimesNewRoman);
 
-                    _helper.BuildStudentList(document, fontSize, DocumentFont.TimesNewRoman, report.Students.ToList());
-                }
-            }
+            _helper.BuildStudentList(document, fontSize, DocumentFont.TimesNewRoman, report.Students.ToList());
         }
     }
 }

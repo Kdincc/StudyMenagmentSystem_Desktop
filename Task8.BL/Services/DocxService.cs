@@ -20,9 +20,9 @@ namespace Task8.BL.Services
             ArgumentNullException.ThrowIfNull(savePath, nameof(savePath));
             ArgumentNullException.ThrowIfNull(report, nameof(report));
 
-            const int listFontSize = 14;
-            const int titleFontSize = 16;
-            XWPFDocument doc = new();
+            int listFontSize = 14;
+            int titleFontSize = 16;
+            using XWPFDocument doc = new();
 
             _helper.BuildHeader(doc, report.CourseNameHeader, titleFontSize, DocumentFont.TimesNewRoman, true);
 
