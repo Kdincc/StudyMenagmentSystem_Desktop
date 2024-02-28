@@ -58,8 +58,6 @@ public partial class Task6Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        MigrateNotAppliedMigrations();
-
         modelBuilder.Entity<Course>(entity =>
         {
             entity.HasKey(e => e.CourseId).HasName("PK__COURSES__71CB31DB72DA58AE");

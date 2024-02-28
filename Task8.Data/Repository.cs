@@ -17,6 +17,7 @@ namespace Task8.Data
         public Repository(Task6Context context)
         {
             _context = context;
+            _context.MigrateNotAppliedMigrations();
         }
 
         public IEnumerable<Course> Courses => _context.Courses.Include(c => c.Groups).ThenInclude(t => t.Teacher).Include(g => g.Groups).ThenInclude(s => s.Students);
