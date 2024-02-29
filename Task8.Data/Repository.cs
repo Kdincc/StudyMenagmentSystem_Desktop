@@ -49,7 +49,7 @@ namespace Task8.Data
         {
             if (Courses.IsNullOrEmpty())
             {
-                string pressetPath = "\\Task8\\Task8.BL\\Pressets.json";
+                string pressetPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pressets.json");
                 string jsonString = File.ReadAllText(pressetPath);
 
                 var presset = JsonConvert.DeserializeObject<DataPresset>(jsonString);

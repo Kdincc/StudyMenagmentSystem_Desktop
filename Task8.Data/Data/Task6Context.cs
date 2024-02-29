@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -48,7 +49,7 @@ public partial class Task6Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string configPath = "\\Task8\\Task8\\Config.json";
+        string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
 
         if (!optionsBuilder.IsConfigured)
         {
