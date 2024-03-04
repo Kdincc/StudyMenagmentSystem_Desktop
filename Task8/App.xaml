@@ -1,0 +1,22 @@
+﻿<prism:PrismApplication x:Class="Task8.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Task8"
+             xmlns:prism="http://prismlibrary.com/" >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes\MenuButton.xaml"/>
+                <ResourceDictionary Source="Themes\WindowButton.xaml"/>
+                <ResourceDictionary Source="Themes\TreeItemStyle.xaml"/>
+                <ResourceDictionary Source="Themes\ToolBarButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes\ModernTextBox.xaml"/>
+                <ResourceDictionary Source="Themes\ListItemButton.xaml"/>
+                <ResourceDictionary Source="Themes\CustomListBoxItem.xaml"/>
+                <ResourceDictionary Source="Themes\CustomTextBlock.xaml"/>
+                <ResourceDictionary Source="Themes\СomboBoxStyle.xaml"/>
+                <ResourceDictionary Source="Themes\UpdateButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>
